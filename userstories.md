@@ -7,3 +7,9 @@ As a developer I want to create a program that has strong accessibility, such as
 As a user I want a tool that can assess what a client/students' relative strengths and weaknesses are.
 
 As a user I want survey results that can clearly understandable to a wide audience, through verbally based results, tables, and charts. 
+
+As test taker, I want the interface and questions to be easy to use and understand. 
+
+As a test taker, I want to to have a sense of how long the test is and how much further I have to go. 
+
+As a test taker I want have access both before and after the test to clear descriptions of the different intelligence types and how this information can be used. 
