@@ -1,0 +1,57 @@
+body{
+  width:90%;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  background-color: #fff;
+  color: #697E7F;
+}
+
+section{
+  width: 80%;
+  margin: 0 auto;
+}
+
+.IQtypes div{
+  min-height:200px;
+  margin: 20px;
+}
+
+.IQtypes h3{
+  text-shadow: 1px 1px 1px #888;
+  font-size: larger;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+}
+
+.IQtypes img{
+  float:right;
+  margin-left: 10px;
+  border-radius: 10%;
+}
+
+#linguist h3{
+  color:#DFFF62;
+}
+
+#logic h3{
+  color: #437D7F;
+}
+
+#music h3{
+  color:#FF6FBB;
+}
+
+#bodily h3{
+  color:#E8A959;
+}
+
+#spatial h3{
+  color:#70FFC8;
+}
+
+#intra h3{
+  color:#5963E8
+}
+
+#inter h3{
+  color:#85FCFF;
+}
