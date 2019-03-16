@@ -60,13 +60,12 @@ intelligence. Potential careers: writer, editor, attorney, politician, public sp
 Logical-mathematical intelligence consists of the capacity to analyze problems
 logically, carry out mathematical operations, and investigate issues scientifically. In
 Howard Gardner's words, it entails the ability to detect patterns, reason deductively and
-think logically. This intelligence is most often associated with scientific and
-mathematical thinking. Potential careers: accountant, computer programmer, engineer, scientist, detective.
+think logically. This intelligence is most often associated with scientific and mathematical thinking. Potential careers: accountant, computer programmer, engineer, scientist, detective.
+
 
 Musical intelligence involves skill in the performance, composition, and appreciation of
 musical patterns. It encompasses the capacity to recognize and compose musical pitches,
-tones, and rhythms. According to Howard Gardner musical intelligence runs in an almost
-structural parallel to linguistic intelligence. Potential careers: musician, singer, composer, director.
+tones, and rhythms. According to Howard Gardner musical intelligence runs in an almost structural parallel to linguistic intelligence. Potential careers: musician, singer, composer, director.
 
 Bodily-kinesthetic intelligence entails the potential of using one's whole body or parts of
 the body to solve problems. It is the ability to use mental abilities to coordinate bodily
@@ -82,6 +81,7 @@ Educators, salespeople, religious and political leaders and counselors all need 
 Intrapersonal intelligence entails the capacity to understand oneself, to appreciate one's
 feelings, fears and motivations. In Howard Gardner's view it involves having an effective
 working model of ourselves, and to be able to use such information to regulate our lives. Potential careers: writer, counselor.
+
 
 
 Howard Gardener Quote:
@@ -112,3 +112,4 @@ More detailed results statement (for more detailed results page):
 
 name + "highest areas of inteligence were" + and + and + ... "Their next highest areas were" + and +...
 "their lowest area was" +. "They would likely be good at and enjoy careers in the following areas:" (make list)
+
