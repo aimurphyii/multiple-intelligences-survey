@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="../css/reset.css">
   <link rel="stylesheet" type="text/css" href="../css/ai.css">
   <title>Document</title>
 </head>
+
 <body>
   <!-- Brandyn's header space -->
   <header>
@@ -20,36 +22,46 @@
   </nav>
   <!-- Brandyn's header space -->
 
+  <section id="input">
+    <!-- make an input form name date  -->
+    <form id="userform">
+      <fieldset>
+        <legend>Please complete the following:</legend>
+        <label for="name">Name:</label>
+        <input name="name" type="text">
+        <label for="birthdate">Birthdate:</label>
+        <input name="birthdate" type="text">
+        <label for="date">Today's Date:</label>
+        <input name="date" type="text">
+        <button type="submit">Begin your IQ journey!</button>
+      </fieldset>
+    </form>
+  </section>
+  <!-- end of input form -->
 
-<!-- make an input form name date  -->
-<form>
-  <fieldset>
-    <legend>Please complete the following:</legend>
-    <label for="name">Name:</label>
-    <input name="name" type="text">
-    <label for="birthdate">Birthdate:</label>
-    <input name="birthdate" type="text">
-    <label for="date">Today's Date:</label>
-    <input name="date" type="text">
-    <button type="submit">Begin your IQ journey!</button>
-  </fieldset>
-</form>
-<!-- end of input form -->
+  <!-- make a template for testing -->
 
-<!-- make a template for testing -->
-<section>
-<h2 id="qtitle">Question #</h2>
-<audio id="qnumsoundfile" src=" /Users/pandamurphyii/Music/iTunes/iTunes Media/Music/Minus the Bear/Menos El Oso/06 Pachuca Sunrise.mp3" type="audio/mp3" controls=""></audio>
-</section>
-<section>
-<div id="testquestion">I can help a friend sort out strong feelings because I successfully dealt with similar feelings myself.</div>
-<ul class="testanswer">
-<li><div id="true">T</div></li>
-<li><div id="false">F</div></li>
-</ul>
-</section>
-<!-- end template -->
+  <section id="surveytop">
 
-<script src="../js/plan.js"></script>
+    <h2 id="qtitle"></h2>
+    <div id="qaudio"></div>
+
+  </section>
+  <section id="surveymid">
+    <!-- <div id="question"></div> -->
+  </section>
+
+  <section id="surveybottom">
+    <ul class="testanswer" id="testanswer">
+
+      <!-- <li><div id="true"></div></li>
+        <li><div id="false"></div></li> -->
+
+    </ul>
+  </section>
+  <!-- end template -->
+
+  <script src="../js/plan.js"></script>
 </body>
+
 </html>
