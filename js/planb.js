@@ -88,30 +88,40 @@ function handleUserInfo(event) {
   var input = document.getElementById('input');
   input.parentElement.removeChild(input);
   showQuestion();
+  showTitle();
+  // showAudio();
+  showAnswers();
 }
 
 userForm.addEventListener('submit', handleUserInfo);
 
+// build a function to call our objects
+
+var currentQuestion = 0;
 
 // this funciton will handle the rendering of new questions
 
-function showQuestion() {
-  for (var i = 0; i < testQuestions.length; i++){
-
+function showTitle() {
   // generate Q title and counter
-  qtitle.textContent = `Question ${testQuestions[i].index} of 35`;
+  qtitle.textContent = `Question ${testQuestions[currentQuestion].index} of 35`;
   surveytop.appendChild(qtitle);
+}
 
-  // generate audio
-  qaudio.innerHTML = '<audio id=\"\" src=\"\" type=\"audio/mp3\" controls=\"\"></audio>';
-  surveytop.appendChild(qaudio);
+// function showAudio() {
+//   // generate audio
+//   qaudio.innerHTML = `<audio id=\"\" src=\"${testQuestions[currentQuestion].filepath}\" type=\"audio/mp3\" controls=\"\"></audio>`;
+//   surveytop.appendChild(qaudio);
+// }
 
+function showQuestion() {
   // generate test question
 
   question.innerHTML =
-    `<div id=\"question\">${testQuestions[i].qvalue}</div>`;
+    `<div id=\"question\">${testQuestions[currentQuestion].qvalue}</div>`;
   surveymid.appendChild(question);
-  
+}
+
+function showAnswers() {
   // generate answer selections
 
   answerTrue.innerHTML = '<div id=\"true\">T</div>';
@@ -121,40 +131,45 @@ function showQuestion() {
   testanswer.appendChild(answerFalse);
 
 }
-}
 
+// accept answers
 
-  // accept answers
-  answerTrue.addEventListener('click', handleTrue);
-  answerFalse.addEventListener('click', handleFalse);
+// create listener for each true and false
+// create if things we want to happen/else run fn to show next prompt
+answerTrue.addEventListener('click', handleTrue);
+answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  for (var i = 0; i < testQuestions.length; i++) {
-    testQuestions[i].true++;
+  if (qcounter<35) {
+    testQuestions[currentQuestion].true++;
     console.log(event.target);
-    console.log(testQuestions[i].true);
-    counter++;
-  }
-
+    console.log(testQuestions[currentQuestion].true);
+    qcounter++;
   //  clear for next round
   // surveytop.removeChild(qaudio);
   // surveytop.removeChild(qtitle);
   // surveymid.removeChild(question);
   // survey.removeChild(testanswer);
   showQuestion();
+  showTitle();
+  // showAudio();
+  showAnswers();
+  }
+currentQuestion++;
 }
 
 
 function handleFalse(event) {
   console.log(event.target);
-
+if (qcounter<35){
   // clear for next round
-  surveytop.removeChild(qaudio);
-  surveytop.removeChild(qtitle);
-  surveymid.removeChild(question);
-  // survey.removeChild(testanswer);
+
   showQuestion();
-  counter++;
+  showTitle();
+  // showAudio();
+  showAnswers();
+  qcounter++;
+}
 }
 
 // Have progress bar across top. (maybe stretch goal)
