@@ -34,12 +34,12 @@ var UserInfo = function (name, birthdate, testdate) {
 // make arrays for each intelligence to count up number of trues. trues will be pushed up from each question object on click
 // var types={
 var linguistCount = 0;
-var logic = 0;
+var logicCount = 0;
 var musicalCount = 0;
-var bodily = 0;
-var spatial = 0;
-var inter = 0;
-var intra = 0;
+var bodilyCount = 0;
+var spatialCount = 0;
+var interCount = 0;
+var intraCount = 0;
 // }
 
 var testQuestions = [];
@@ -60,10 +60,18 @@ var IqType = function (qvalue, category, index, filepath) {
   testQuestions.push(this);
 }
 
-new IqType('I’d rather draw a map than give someone verbal directions.', 'visual', '1', 'audio/q1.mp3');
+new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
 new IqType('If I am angry or happy, I usually know exactly why.', 'intra', '2', 'audio/q2.mp3');
 new IqType('I can play (or used to play) a musical instrument.', 'musical', '3', 'audio/q3.mp3');
 new IqType('I can associate music with my moods.', 'musical', '4', 'audio/q4.mp3');
+new IqType('I can add or multiply quickly in my head.', 'logic', '5', 'audio/q5.mp3');
+new IqType('I can help a friend sort out strong feelings because I successfully dealt with similar feelings myself.', 'inter', '6', 'audio/q6.mp3');
+new IqType('I like to work with calculators and computers.', 'logic', '7', 'audio/q7.mp3');
+
+
+
+
+
 
 console.log('questions ', testQuestions);
 console.log(testQuestions[0].qvalue);
@@ -141,35 +149,46 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (qcounter<4) {
+  if (qcounter<7) {
     console.log('test q current q is at' ,testQuestions[currentQuestion].category);
+    console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist'){
       linguistCount++;
     }else if(testQuestions[currentQuestion].category === 'logic'){
-      logic++;
+      logicCount++;
     }else if(testQuestions[currentQuestion].category === 'musical'){
       musicalCount++;
     }else if(testQuestions[currentQuestion].category === 'bodily'){
-      bodily++;
+      bodilyCount++;
     }else if(testQuestions[currentQuestion].category === 'spatial'){
-      spatial++;
+      spatialCount++;
     }else if(testQuestions[currentQuestion].category === 'inter'){
-      inter++;
+      interCount++;
     }else{
-      intra++;
+      intraCount++;
     };
-    console.log('music is ', testQuestions[currentQuestion].musical);
+    console.log('music is ', musicalCount);
+    console.log('linguist is ', linguistCount);
+    console.log('visual is ', spatialCount);
+    console.log('intra is ', intraCount);
+    console.log('inter is ', interCount);
+    console.log('bodily is ', bodilyCount);
+    console.log('logic is ', logicCount);
     console.log(event.target);
-    qcounter++;
   //  clear for next round
+
+  currentQuestion++;
+  qcounter++;
 
   showQuestion();
   showTitle();
   // showAudio();
   showAnswers();
+  } else {
+    console.log('DONE');
   }
 // console.log('currentQuestion ',parseInt(currentQuestion));
-currentQuestion++;
+
 // types[testQuestions[parseInt(currentQuestion)].category]++;
 // console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
 }
@@ -179,12 +198,13 @@ function handleFalse(event) {
   console.log(event.target);
 if (qcounter<35){
   // clear for next round
-
+  qcounter++;
+  currentQuestion++;
   showQuestion();
   showTitle();
   // showAudio();
   showAnswers();
-  qcounter++;
+
 }
 }
 
