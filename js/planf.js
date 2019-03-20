@@ -22,8 +22,6 @@ var question = document.createElement('p');
 // var testDate = document.getElementsByName('date');
 
 var qcounter = 0;
-
-
 var userLog = [];
 
 var UserInfo = function (name, birthdate, testdate) {
@@ -101,6 +99,7 @@ function handleUserInfo(event) {
   showTitle();
   // showAudio();
   showAnswers();
+  console.log()
 }
 
 userForm.addEventListener('submit', handleUserInfo);
@@ -151,7 +150,7 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (qcounter<7) {
+  if (qcounter<testQuestions.length) {
     console.log('test q current q is at' ,testQuestions[currentQuestion].category);
     console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist'){
@@ -177,7 +176,6 @@ function handleTrue(event) {
     console.log('bodily is ', bodilyCount);
     console.log('logic is ', logicCount);
     console.log(event.target);
-  //  clear for next round
 
   currentQuestion++;
   qcounter++;
@@ -188,6 +186,7 @@ function handleTrue(event) {
   showAnswers();
   } else {
     console.log('DONE');
+    showMeResults();
   }
 // types[testQuestions[parseInt(currentQuestion)].category]++;
 // console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
@@ -196,14 +195,16 @@ function handleTrue(event) {
 
 function handleFalse(event) {
   console.log(event.target);
-if (qcounter<35){
-  // clear for next round
+if (qcounter<testQuestions.length){
+
   qcounter++;
   currentQuestion++;
   showQuestion();
   showTitle();
   // showAudio();
   showAnswers();
+}else{
+  showMeResults();
 };
 }
 
@@ -214,3 +215,45 @@ if (qcounter<35){
 // event handler will add to general counter and intelligence specific counters as well as prompting next question
 
 // create a function that will push new questions into the template
+
+function updateChartArrays() {
+
+  // make a sub function to run percentage scores of each type?
+  // push the scores up to an array, loop through with equation below?
+  percents[i] = Math.floor('score' / 'total answer trues' * 100);
+  if (isNaN(percent)) {
+    percents[i] = 0;
+  };
+}
+
+function showMeResults() {
+
+  // Bring to a close by turning off the event handler
+  document.getElementById("true").removeEventListener('click', handleTrue);
+  document.getElementById("false").removeEventListener('click', handleFalse);
+
+  // tuck away the test forms
+  surveytop.parentElement.removeChild(surveytop);
+  surveymid.parentElement.removeChild(surveymid);
+  surveybottom.parentElement.removeChild(surveybottom);
+
+
+
+  // get the results section from DOM
+  var intelReport = document.getElementById('results');
+
+  // Assign content as empty string so we can dynamically create
+  intelReport.innerHTML = '';
+  var headline = document.createElement('h2');
+  headline.innerHTML = `${userLog[UserInfo].name}, your strongest intelligence is: [intelligence here]`
+  // Attach it, or it won't show up:
+  intelReport.appendChild(headline);
+  
+  // and display the pic chart
+
+
+  // stringify, then store
+  // // send it to local storage
+  // localStorage.busMallCatalogue = JSON.stringify(saved answers);
+  // console.log('stringified ',JSON.stringify(saved answers));
+}
