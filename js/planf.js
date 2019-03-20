@@ -22,13 +22,13 @@ var question = document.createElement('p');
 // var testDate = document.getElementsByName('date');
 
 var qcounter = 0;
-
+var userLog = [];
 
 var UserInfo = function (name, birthdate, testdate) {
   this.name = name;
   this.birthdate = birthdate;
   this.testdate = testdate;
-};
+}
 
 
 // make arrays for each intelligence to count up number of trues. trues will be pushed up from each question object on click
@@ -58,7 +58,7 @@ var IqType = function (qvalue, category, index, filepath) {
   this.filepath = filepath;
 
   testQuestions.push(this);
-};
+}
 
 new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
 new IqType('If I am angry or happy, I usually know exactly why.', 'intra', '2', 'audio/q2.mp3');
@@ -87,6 +87,8 @@ function handleUserInfo(event) {
 
   var newUser = new UserInfo(userName, birthDate, testDate);
 
+  userLog.push(newUser);
+  console.log('userLog is ', userLog);
   console.log('newUser is ', newUser);
   // we need to figure out how to log dates in and in what format
 
@@ -97,6 +99,7 @@ function handleUserInfo(event) {
   showTitle();
   // showAudio();
   showAnswers();
+  console.log()
 }
 
 userForm.addEventListener('submit', handleUserInfo);
@@ -147,7 +150,7 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (qcounter<7) {
+  if (qcounter<testQuestions.length) {
     console.log('test q current q is at' ,testQuestions[currentQuestion].category);
     console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist'){
@@ -164,7 +167,7 @@ function handleTrue(event) {
       interCount++;
     }else{
       intraCount++;
-    }
+    };
     console.log('music is ', musicalCount);
     console.log('linguist is ', linguistCount);
     console.log('visual is ', spatialCount);
@@ -173,19 +176,18 @@ function handleTrue(event) {
     console.log('bodily is ', bodilyCount);
     console.log('logic is ', logicCount);
     console.log(event.target);
-    //  clear for next round
 
-    currentQuestion++;
-    qcounter++;
+  currentQuestion++;
+  qcounter++;
 
-    showQuestion();
-    showTitle();
-    // showAudio();
-    showAnswers();
+  showQuestion();
+  showTitle();
+  // showAudio();
+  showAnswers();
   } else {
     console.log('DONE');
+    showMeResults();
   }
-
 // types[testQuestions[parseInt(currentQuestion)].category]++;
 // console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
 }
@@ -193,8 +195,7 @@ function handleTrue(event) {
 
 function handleFalse(event) {
   console.log(event.target);
-  if (qcounter<35){
-  // clear for next round
+if (qcounter<testQuestions.length){
 
   qcounter++;
   currentQuestion++;
@@ -202,8 +203,9 @@ function handleFalse(event) {
   showTitle();
   // showAudio();
   showAnswers();
+}else{
+  showMeResults();
 };
-
 }
 
 // console.log(musical);
@@ -213,3 +215,45 @@ function handleFalse(event) {
 // event handler will add to general counter and intelligence specific counters as well as prompting next question
 
 // create a function that will push new questions into the template
+
+function updateChartArrays() {
+
+  // make a sub function to run percentage scores of each type?
+  // push the scores up to an array, loop through with equation below?
+  percents[i] = Math.floor('score' / 'total answer trues' * 100);
+  if (isNaN(percent)) {
+    percents[i] = 0;
+  };
+}
+
+function showMeResults() {
+
+  // Bring to a close by turning off the event handler
+  document.getElementById("true").removeEventListener('click', handleTrue);
+  document.getElementById("false").removeEventListener('click', handleFalse);
+
+  // tuck away the test forms
+  surveytop.parentElement.removeChild(surveytop);
+  surveymid.parentElement.removeChild(surveymid);
+  surveybottom.parentElement.removeChild(surveybottom);
+
+
+
+  // get the results section from DOM
+  var intelReport = document.getElementById('results');
+
+  // Assign content as empty string so we can dynamically create
+  intelReport.innerHTML = '';
+  var headline = document.createElement('h2');
+  headline.innerHTML = `${userLog[UserInfo].name}, your strongest intelligence is: [intelligence here]`
+  // Attach it, or it won't show up:
+  intelReport.appendChild(headline);
+  
+  // and display the pic chart
+
+
+  // stringify, then store
+  // // send it to local storage
+  // localStorage.busMallCatalogue = JSON.stringify(saved answers);
+  // console.log('stringified ',JSON.stringify(saved answers));
+}
