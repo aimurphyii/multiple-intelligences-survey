@@ -23,7 +23,6 @@ var question = document.createElement('p');
 
 var qcounter = 0;
 
-
 var UserInfo = function (name, birthdate, testdate) {
   this.name = name;
   this.birthdate = birthdate;
@@ -58,7 +57,9 @@ var IqType = function (qvalue, category, index, filepath) {
   this.filepath = filepath;
 
   testQuestions.push(this);
-};
+}
+
+// Objects/test questions
 
 new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
 new IqType('If I am angry or happy, I usually know exactly why.', 'intra', '2', 'audio/q2.mp3');
@@ -67,11 +68,34 @@ new IqType('I can associate music with my moods.', 'musical', '4', 'audio/q4.mp3
 new IqType('I can add or multiply quickly in my head.', 'logic', '5', 'audio/q5.mp3');
 new IqType('I can help a friend sort out strong feelings because I successfully dealt with similar feelings myself.', 'inter', '6', 'audio/q6.mp3');
 new IqType('I like to work with calculators and computers.', 'logic', '7', 'audio/q7.mp3');
-
-
-
-
-
+new IqType('I pick up new dance steps fast.', 'logic', '8', 'audio/q8.mp3');
+new IqType('It is easy for me to say what I think in an argument or debate.', 'logic', '9', 'audio/q9.mp3');
+new IqType('I enjoy a good lecture, speech, or sermon.', 'logic', '10', 'audio/q10.mp3');
+new IqType('I always know north from south no matter where I am.', 'logic', '11', 'audio/q11.mp3');
+new IqType('I like to gather together groups of people for parties of special events.', 'logic', '12', 'audio/q12.mp3');
+new IqType('Life seems empty without music.', 'logic', '13', 'audio/q13.mp3');
+new IqType('I always understand the drawings that come with new gadgets or appliances.', 'logic', '14', 'audio/q14.mp3');
+new IqType('I like to work puzzles and play games.', 'logic', '15', 'audio/q15.mp3');
+new IqType('Learning to ride a bike (or skates) was easy.', 'logic', '16', 'audio/q16.mp3');
+new IqType('I am irritated when I hear an argument or statement that sounds illogical.', 'logic', '17', 'audio/q17.mp3');
+new IqType('I can convince other people to follow my plans.', 'logic', '18', 'audio/q18.mp3');
+new IqType('My sense of balance and coordination is good.', 'logic', '19', 'audio/q19.mp3');
+new IqType('I often see patterns and relationships between numbers faster and easier than others do.', 'logic', '20', 'audio/q20.mp3');
+new IqType('I enjoy building models (or sculpting).', 'logic', '21', 'audio/q21.mp3');
+new IqType('I’m good at finding the fine points of word meanings.', 'logic', '22', 'audio/q22.mp3');
+new IqType('I can look at an object one way and see it turned sideways or backwards just as easily.', 'logic', '23', 'audio/q23.mp3');
+new IqType('I often connect a piece of music with some event in my life.', 'logic', '24', 'audio/q24.mp3');
+new IqType('I like to work with numbers and figures.', 'logic', '25', 'audio/q25.mp3');
+new IqType('I like to sit quietly and reflect on my inner feelings.', 'logic', '26', 'audio/q26.mp3');
+new IqType('Just looking at shapes of buildings and structures is pleasurable to me.', 'logic', '27', 'audio/q27.mp3');
+new IqType('I like to hum, whistle, and sing in the shower or when I’m alone.', 'logic', '28', 'audio/q28.mp3');
+new IqType('I’m good at athletics.', 'logic', '29', 'audio/q29.mp3');
+new IqType('I enjoy writing detailed letters to friends.', 'logic', '30', 'audio/q30.mp3');
+new IqType('I’m usually aware of the expression on my face.', 'logic', '31', 'audio/q31.mp3');
+new IqType('I’m sensitive to the expressions on other people’s faces.', 'logic', '32', 'audio/q32.mp3');
+new IqType('I stay “in touch” with my moods. I have no trouble identifying them.', 'logic', '33', 'audio/q33.mp3');
+new IqType('I am sensitive to the moods of others.', 'logic', '34', 'audio/q34.mp3');
+new IqType('I have a good sense of what others think of me.', 'logic', '35', 'audio/q35.mp3');
 
 console.log('questions ', testQuestions);
 console.log(testQuestions[0].qvalue);
@@ -87,6 +111,8 @@ function handleUserInfo(event) {
 
   var newUser = new UserInfo(userName, birthDate, testDate);
 
+  userLog.push(newUser);
+  console.log('userLog is ', userLog);
   console.log('newUser is ', newUser);
   // we need to figure out how to log dates in and in what format
 
@@ -164,7 +190,7 @@ function handleTrue(event) {
       interCount++;
     }else{
       intraCount++;
-    }
+    };
     console.log('music is ', musicalCount);
     console.log('linguist is ', linguistCount);
     console.log('visual is ', spatialCount);
@@ -173,18 +199,17 @@ function handleTrue(event) {
     console.log('bodily is ', bodilyCount);
     console.log('logic is ', logicCount);
     console.log(event.target);
-    //  clear for next round
+  //  clear for next round
 
-    currentQuestion++;
-    qcounter++;
+  currentQuestion++;
+  qcounter++;
 
-    showQuestion();
-    showTitle();
-    // showAudio();
-    showAnswers();
-  } else {
-    console.log('DONE');
-  }
+  showQuestion();
+  showTitle();
+  // showAudio();
+  showAnswers();
+  } 
+// console.log('currentQuestion ',parseInt(currentQuestion));
 
 // types[testQuestions[parseInt(currentQuestion)].category]++;
 // console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
@@ -193,17 +218,16 @@ function handleTrue(event) {
 
 function handleFalse(event) {
   console.log(event.target);
-  if (qcounter<35){
+if (qcounter<35){
   // clear for next round
-
   qcounter++;
   currentQuestion++;
   showQuestion();
   showTitle();
   // showAudio();
   showAnswers();
-};
 
+}
 }
 
 // console.log(musical);
