@@ -22,13 +22,12 @@ var question = document.createElement('p');
 // var testDate = document.getElementsByName('date');
 
 var qcounter = 0;
-var userLog = [];
 
 var UserInfo = function (name, birthdate, testdate) {
   this.name = name;
   this.birthdate = birthdate;
   this.testdate = testdate;
-}
+};
 
 
 // make arrays for each intelligence to count up number of trues. trues will be pushed up from each question object on click
@@ -58,7 +57,7 @@ var IqType = function (qvalue, category, index, filepath) {
   this.filepath = filepath;
 
   testQuestions.push(this);
-}
+};
 
 new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
 new IqType('If I am angry or happy, I usually know exactly why.', 'intra', '2', 'audio/q2.mp3');
@@ -87,8 +86,6 @@ function handleUserInfo(event) {
 
   var newUser = new UserInfo(userName, birthDate, testDate);
 
-  userLog.push(newUser);
-  console.log('userLog is ', userLog);
   console.log('newUser is ', newUser);
   // we need to figure out how to log dates in and in what format
 
@@ -166,7 +163,7 @@ function handleTrue(event) {
       interCount++;
     }else{
       intraCount++;
-    };
+    }
     console.log('music is ', musicalCount);
     console.log('linguist is ', linguistCount);
     console.log('visual is ', spatialCount);
@@ -175,19 +172,19 @@ function handleTrue(event) {
     console.log('bodily is ', bodilyCount);
     console.log('logic is ', logicCount);
     console.log(event.target);
-  //  clear for next round
+    //  clear for next round
 
-  currentQuestion++;
-  qcounter++;
+    currentQuestion++;
+    qcounter++;
 
-  showQuestion();
-  showTitle();
-  // showAudio();
-  showAnswers();
+    showQuestion();
+    showTitle();
+    // showAudio();
+    showAnswers();
   } else {
     console.log('DONE');
   }
-// console.log('currentQuestion ',parseInt(currentQuestion));
+  // console.log('currentQuestion ',parseInt(currentQuestion));
 
 // types[testQuestions[parseInt(currentQuestion)].category]++;
 // console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
@@ -196,16 +193,16 @@ function handleTrue(event) {
 
 function handleFalse(event) {
   console.log(event.target);
-if (qcounter<35){
+  if (qcounter<35){
   // clear for next round
-  qcounter++;
-  currentQuestion++;
-  showQuestion();
-  showTitle();
-  // showAudio();
-  showAnswers();
+    qcounter++;
+    currentQuestion++;
+    showQuestion();
+    showTitle();
+    // showAudio();
+    showAnswers();
 
-}
+  }
 }
 
 // console.log(musical);
