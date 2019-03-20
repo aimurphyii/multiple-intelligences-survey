@@ -213,3 +213,23 @@ form button:hover {
   color:#85FCFF;
   background-color: rgba(133, 253, 255, 0.25);
 }
+
+.bios div{
+  min-height:200px;
+  margin: 20px;
+}
+
+.bios h3{
+  text-shadow: 1px 1px 1px #888;
+  font-size: larger;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
+.bios img{
+  float:right;
+  margin-left: 10px;
+  border-radius: 10%;
+}
