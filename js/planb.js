@@ -42,6 +42,18 @@ var interCount = 0;
 var intraCount = 0;
 // }
 
+//Empty array for IQ types
+var iqArray = [];
+
+// Empty arrays for each IQ type
+var linguistArray = [];
+var logicArray = [];
+var musicalArray = [];
+var bodilyArray = [];
+var spatialAray = [];
+var interArray = [];
+var intraArray = [];
+
 var testQuestions = [];
 
 // For each question:
@@ -57,7 +69,16 @@ var IqType = function (qvalue, category, index, filepath) {
   this.index = index;
   this.filepath = filepath;
 
+  // var linguistCount = 0;
+  // var logicCount = 0;
+  // var musicalCount = 0;
+  // var bodilyCount = 0;
+  // var spatialCount = 0;
+  // var interCount = 0;
+  // var intraCount = 0;
+
   testQuestions.push(this);
+  iqArray.push(this);
 };
 
 new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
@@ -67,6 +88,7 @@ new IqType('I can associate music with my moods.', 'musical', '4', 'audio/q4.mp3
 new IqType('I can add or multiply quickly in my head.', 'logic', '5', 'audio/q5.mp3');
 new IqType('I can help a friend sort out strong feelings because I successfully dealt with similar feelings myself.', 'inter', '6', 'audio/q6.mp3');
 new IqType('I like to work with calculators and computers.', 'logic', '7', 'audio/q7.mp3');
+
 
 
 
@@ -147,23 +169,37 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (qcounter<7) {
+  if (qcounter<testQuestions.length) {
     console.log('test q current q is at' ,testQuestions[currentQuestion].category);
     console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist'){
-      linguistCount++;
+      // linguistCount++;
+      // iqArray.push(linguistCount); // added this and other pushes for categories in peer programming
+      currentQuestion.linguistCount++;
     }else if(testQuestions[currentQuestion].category === 'logic'){
       logicCount++;
+      iqArray.push(logicCount);
+      // currentQuestion.logicCount++;
     }else if(testQuestions[currentQuestion].category === 'musical'){
       musicalCount++;
+      iqArray.push(musicalCount);
+      // currentQuestion.musicalCount++;
     }else if(testQuestions[currentQuestion].category === 'bodily'){
       bodilyCount++;
+      iqArray.push(bodilyCount);
+      // currentQuestion.bodilyCount++;
     }else if(testQuestions[currentQuestion].category === 'spatial'){
       spatialCount++;
+      iqArray.push(spatialCount);
+      // currentQuestion.spatialCount++;
     }else if(testQuestions[currentQuestion].category === 'inter'){
       interCount++;
+      iqArray.push(interCount);
+      // currentQuestion.interCount++;
     }else{
       intraCount++;
+      iqArray.push(intraCount);
+      // iqArray[currentQuestion].intraCount += 1;
     }
     console.log('music is ', musicalCount);
     console.log('linguist is ', linguistCount);
@@ -173,6 +209,7 @@ function handleTrue(event) {
     console.log('bodily is ', bodilyCount);
     console.log('logic is ', logicCount);
     console.log(event.target);
+    console.log('***IQ ARRAY: ARE THERE SEVEN?!?!*** ', iqArray);
     //  clear for next round
 
     currentQuestion++;
@@ -184,25 +221,40 @@ function handleTrue(event) {
     showAnswers();
   } else {
     console.log('DONE');
+    showMeResults();
   }
-
+  // createChart();
 // types[testQuestions[parseInt(currentQuestion)].category]++;
 // console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
 }
 
+// function createChart() {
+//   var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'teal', 'magenta'];
+//   var ctx = document.getElementById('myChart').getContent('2d');
+//   ctx.canvas.width = 400;
+//   ctx.canvas.height = 275;
+//   var myChart = new Chart(ctx, {
+//     type: 'pie',
+//     data: {
+//       labels: 
+//     }
+//   })
+// }
+
 
 function handleFalse(event) {
   console.log(event.target);
-  if (qcounter<35){
+  if (qcounter<testQuestions.length){
   // clear for next round
 
-  qcounter++;
-  currentQuestion++;
-  showQuestion();
-  showTitle();
-  // showAudio();
-  showAnswers();
-};
+    qcounter++;
+    currentQuestion++;
+    showQuestion();
+    showTitle();
+    // showAudio();
+    showAnswers()
+    showMeResults();
+  };
 
 }
 
@@ -213,3 +265,29 @@ function handleFalse(event) {
 // event handler will add to general counter and intelligence specific counters as well as prompting next question
 
 // create a function that will push new questions into the template
+
+function showMeResults() {
+
+  // Bring to a close by turning off the event handler
+  document.getElementById("true").removeEventListener('click', handleTrue);
+  document.getElementById("false").removeEventListener('click', handleFalse);
+
+  // tuck away the test forms
+  surveytop.parentElement.removeChild(surveytop);
+  surveymid.parentElement.removeChild(surveymid);
+  surveybottom.parentElement.removeChild(surveybottom);
+
+
+
+  // get the results section from DOM
+  var intelReport = document.getElementById('results');
+
+  // Assign content as empty string so we can dynamically create
+  intelReport.innerHTML = '';
+  var headline = document.createElement('h2');
+  headline.innerHTML = `${userLog[UserInfo].name}, your strongest intelligence is: [intelligence here]`
+  // Attach it, or it won't show up:
+  intelReport.appendChild(headline);
+  
+  // and display the pic chart
+}
