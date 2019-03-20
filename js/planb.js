@@ -22,24 +22,24 @@ var question = document.createElement('p');
 // var testDate = document.getElementsByName('date');
 
 var qcounter = 0;
-var userLog = [];
 
 var UserInfo = function (name, birthdate, testdate) {
   this.name = name;
   this.birthdate = birthdate;
   this.testdate = testdate;
-}
+};
 
 
 // make arrays for each intelligence to count up number of trues. trues will be pushed up from each question object on click
-
-var linguist = [];
-var logic = [];
-var music = [];
-var bodily = [];
-var spatial = [];
-var inter = [];
-var intra = [];
+// var types={
+var linguistCount = 0;
+var logicCount = 0;
+var musicalCount = 0;
+var bodilyCount = 0;
+var spatialCount = 0;
+var interCount = 0;
+var intraCount = 0;
+// }
 
 var testQuestions = [];
 
@@ -55,15 +55,22 @@ var IqType = function (qvalue, category, index, filepath) {
   this.category = category;
   this.index = index;
   this.filepath = filepath;
-  this.true = 0;
 
   testQuestions.push(this);
-}
+};
 
-new IqType('I’d rather draw a map than give someone verbal directions.', 'visual', '1', 'audio/q1.mp3');
+new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
 new IqType('If I am angry or happy, I usually know exactly why.', 'intra', '2', 'audio/q2.mp3');
 new IqType('I can play (or used to play) a musical instrument.', 'musical', '3', 'audio/q3.mp3');
 new IqType('I can associate music with my moods.', 'musical', '4', 'audio/q4.mp3');
+new IqType('I can add or multiply quickly in my head.', 'logic', '5', 'audio/q5.mp3');
+new IqType('I can help a friend sort out strong feelings because I successfully dealt with similar feelings myself.', 'inter', '6', 'audio/q6.mp3');
+new IqType('I like to work with calculators and computers.', 'logic', '7', 'audio/q7.mp3');
+
+
+
+
+
 
 console.log('questions ', testQuestions);
 console.log(testQuestions[0].qvalue);
@@ -79,8 +86,6 @@ function handleUserInfo(event) {
 
   var newUser = new UserInfo(userName, birthDate, testDate);
 
-  userLog.push(newUser);
-  console.log('userLog is ', userLog);
   console.log('newUser is ', newUser);
   // we need to figure out how to log dates in and in what format
 
@@ -117,7 +122,7 @@ function showQuestion() {
   // generate test question
 
   question.innerHTML =
-    `<div id=\"question\">${testQuestions[currentQuestion].qvalue}</div>`;
+    `<div class="${testQuestions[currentQuestion].category}" id=\"question\">${testQuestions[currentQuestion].qvalue}</div>`;
   surveymid.appendChild(question);
 }
 
@@ -132,6 +137,7 @@ function showAnswers() {
 
 }
 
+
 // accept answers
 
 // create listener for each true and false
@@ -140,37 +146,66 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (qcounter<35) {
-    testQuestions[currentQuestion].true++;
+  if (qcounter<7) {
+    console.log('test q current q is at' ,testQuestions[currentQuestion].category);
+    console.log(testQuestions[currentQuestion].qvalue);
+    if (testQuestions[currentQuestion].category === 'linguist'){
+      linguistCount++;
+    }else if(testQuestions[currentQuestion].category === 'logic'){
+      logicCount++;
+    }else if(testQuestions[currentQuestion].category === 'musical'){
+      musicalCount++;
+    }else if(testQuestions[currentQuestion].category === 'bodily'){
+      bodilyCount++;
+    }else if(testQuestions[currentQuestion].category === 'spatial'){
+      spatialCount++;
+    }else if(testQuestions[currentQuestion].category === 'inter'){
+      interCount++;
+    }else{
+      intraCount++;
+    }
+    console.log('music is ', musicalCount);
+    console.log('linguist is ', linguistCount);
+    console.log('visual is ', spatialCount);
+    console.log('intra is ', intraCount);
+    console.log('inter is ', interCount);
+    console.log('bodily is ', bodilyCount);
+    console.log('logic is ', logicCount);
     console.log(event.target);
-    console.log(testQuestions[currentQuestion].true);
+    //  clear for next round
+
+    currentQuestion++;
     qcounter++;
-  //  clear for next round
-  // surveytop.removeChild(qaudio);
-  // surveytop.removeChild(qtitle);
-  // surveymid.removeChild(question);
-  // survey.removeChild(testanswer);
-  showQuestion();
-  showTitle();
-  // showAudio();
-  showAnswers();
+
+    showQuestion();
+    showTitle();
+    // showAudio();
+    showAnswers();
+  } else {
+    console.log('DONE');
   }
-currentQuestion++;
+  // console.log('currentQuestion ',parseInt(currentQuestion));
+
+// types[testQuestions[parseInt(currentQuestion)].category]++;
+// console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
 }
 
 
 function handleFalse(event) {
   console.log(event.target);
-if (qcounter<35){
+  if (qcounter<35){
   // clear for next round
+    qcounter++;
+    currentQuestion++;
+    showQuestion();
+    showTitle();
+    // showAudio();
+    showAnswers();
 
-  showQuestion();
-  showTitle();
-  // showAudio();
-  showAnswers();
-  qcounter++;
+  }
 }
-}
+
+// console.log(musical);
 
 // Have progress bar across top. (maybe stretch goal)
 
