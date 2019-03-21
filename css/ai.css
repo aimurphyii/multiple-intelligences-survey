@@ -1,11 +1,51 @@
 body{
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   font-size: 16px;
   background-color: #E8F6F7;
   color: #697E7F;
 }
 
-section{
+nav{
+  background-color: #697E7F;
+  width:80%;
+  margin: 50px auto;
+}
+
+nav li{
+  display: inline;
+  line-height: 86px;
+}
+
+a{
+  color: #E8F6F7;
+  text-decoration: none;
+  padding-top:35px;
+  padding-bottom:35px;
+  padding-left:20px;
+  padding-right:20px;
+}
+
+a:visited{
+  color:#E8F6F7;
+}
+
+a:hover{
+  color: #D3FEFF;
+  background: #437D7F;
+  line-height: 80px;
+  padding-top:35px;
+  padding-bottom:35px;
+  padding-left:20px;
+  padding-right:20px;
+}
+/* nav li:hover{
+
+} */
+
+h1{
+  font-size: 36px;
+}
+header, section{
   width: 80%;
   margin: 20px auto;
 }
@@ -25,7 +65,7 @@ h2{
 
 
 /* test */
-#testquestion{
+#question{
   margin-bottom: 5px;
   width: 960px;
   height:300px;
@@ -34,18 +74,19 @@ h2{
   line-height: 300px;
   font-size: large;
   color:#fff;
-  background-color: #5963E8;
+  background-color: #697E7F
 }
 .testanswer li{
   float: left;
   margin-bottom: 20px;
 }
+
 #true{
   width:480px;
   height:300px;
   vertical-align: middle;
   line-height: 300px;
-  background-color: #697E7F;
+  background-color: #437D7F;
   color: #fff;
   text-align: center;
   font-size: 100px;
@@ -54,12 +95,13 @@ h2{
   background-color: #85FCFF;
   color:#697E7F;
 }
+
 #false{
   width:480px;
   height:300px;
   vertical-align: middle;
   line-height: 300px;
-  background-color: #697E7F;
+  background-color: #437D7F;
   color: #fff;
   text-align: center;
   font-size: 100px;
@@ -95,13 +137,13 @@ input:focus {
 }
 form button {
   font-size: 14px;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
   text-align: center;
   margin-top: 8px;
   text-transform: capitalize;
   /* border: groove; */
   border-radius: 3px;
-  background: #697E7F;
+  background: #437D7F ;
   color: #fff;
   padding: 10px 5px;
   transition: 350ms all;
@@ -111,6 +153,29 @@ form button {
 form button:hover {
   /* border:ridge; */
   background: #85FCFF;
+  color: #fff;
+  /* border-radius: 50%; */
+}
+
+button {
+  font-size: 14px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  margin-top: 8px;
+  text-transform: capitalize;
+  /* border: groove; */
+  border-radius: 3px;
+  background: #CC444B ;
+  color: #fff;
+  padding: 10px 5px;
+  transition: 350ms all;
+  cursor: pointer;
+}
+
+
+button:hover {
+  /* border:ridge; */
+  background: #E8A959;
   color: #fff;
   /* border-radius: 50%; */
 }
@@ -127,6 +192,8 @@ form button:hover {
   font-size: larger;
   text-transform: capitalize;
   margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
 }
 
 .IQtypes img{
@@ -136,13 +203,16 @@ form button:hover {
 }
 
 #linguist h3{
-  color:#DFFF62;
+  color:#FCE958;
   background-color: rgba(224, 255, 98, 0.25);
 }
 
 #logic h3{
-  color: #437D7F;
-  background-color: rgba(67, 125, 127, 0.25);
+  /* color: #437D7F; */
+  /* background-color: rgba(67, 125, 127, 0.25); */
+
+  color:#CC444B;
+  background-color: rgba(204, 68, 75, 0.25);
 }
 
 #music h3{
@@ -168,4 +238,24 @@ form button:hover {
 #inter h3{
   color:#85FCFF;
   background-color: rgba(133, 253, 255, 0.25);
+}
+
+.bios div{
+  min-height:200px;
+  margin: 20px;
+}
+
+.bios h3{
+  text-shadow: 1px 1px 1px #888;
+  font-size: larger;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
+.bios img{
+  float:right;
+  margin-left: 10px;
+  border-radius: 10%;
 }
