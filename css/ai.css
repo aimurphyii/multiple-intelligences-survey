@@ -156,7 +156,9 @@ form button:hover {
   color: #fff;
   /* border-radius: 50%; */
 }
-
+.right{
+  float: right;
+}
 button {
   font-size: 14px;
   font-family: 'Josefin Sans', sans-serif;
