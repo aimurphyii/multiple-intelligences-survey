@@ -3,34 +3,37 @@
 
 <head>
   <meta charset="UTF-8">
-
   <link rel="stylesheet" type="text/css" href="../css/reset.css">
   <link rel="stylesheet" type="text/css" href="../css/ai.css">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+  <style>@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600');</style>
   <style>@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600');</style>
   <title>Multiple Intelligences Survey</title>
 
 </head>
 
 <body>
-  <!-- Header and Nav-->
-  <header>
-    <h1>Multiple Intelligences Quiz</h1>
-  </header>
-  <nav>
+    <!-- Header and Nav-->
+    <header>
+        <h1>Multiple Intelligences Explained</h1>
+      </header>
+      <nav>
+        <ul>
+          <li><a class="" href="../index.html">Main</a></li>
+          <li><a href="iqtypes.html">Intelligence Types</a></li>
+          <li><a href="testsample.html">Take The Survey</a></li>
+          <li><a href="About.html">About Us</a></li>
+        </ul>
+      </nav>
+      <!-- Header and Nav -->
 
-    <ul>
-      <li><a class="" href="index.html">Main</a></li>
-      <li><a href="../pages/iqtypes.html">Intelligence Types</a></li>
-      <li><a href="testsample.html">Take The Survey</a></li>
-      <li><a href="../About.html">About This Survey</a></li>
-    </ul>
+  <section class="intro" id="input">
 
-  </nav>
-  <!-- Header and Nav -->
-
-  <section id="input">
     <!-- make an input form name date  -->
+    <h2>Instructions:</h2>
+    <p>
+        This quiz will help you identify your areas of strongest intelligence. Read each statement. If it expresses some characteristic of yours and sounds true for the most part, click on “T” for true. If it doesn’t, choose an “F” for false.
+    </p>
+
     <form id="userform">
       <fieldset>
         <legend>Please complete the following:</legend>
@@ -71,7 +74,7 @@
     <canvas id="myChart" width="400" height="400"></canvas>
   </section>
 
-  <script src="../js/planf.js"></script>
+  <script src="../js/planb.js"></script>
 </body>
 
 </html>

@@ -42,6 +42,15 @@ var interCount = 0;
 var intraCount = 0;
 // }
 
+// Empty arrays for each IQ type
+var linguistArray = [];
+var logicArray = [];
+var musicalArray = [];
+var bodilyArray = [];
+var spatialAray = [];
+var interArray = [];
+var intraArray = [];
+
 var testQuestions = [];
 
 // For each question:
@@ -58,7 +67,7 @@ var IqType = function (qvalue, category, index, filepath) {
   this.filepath = filepath;
 
   testQuestions.push(this);
-}
+};
 
 new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
 new IqType('If I am angry or happy, I usually know exactly why.', 'intra', '2', 'audio/q2.mp3');
@@ -188,10 +197,23 @@ function handleTrue(event) {
     console.log('DONE');
     showMeResults();
   }
+  createChart();
 // types[testQuestions[parseInt(currentQuestion)].category]++;
 // console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
 }
 
+function createChart() {
+  var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'teal', 'magenta'];
+  var ctx = document.getElementById('myChart').getContent('2d');
+  ctx.canvas.width = 400;
+  ctx.canvas.height = 275;
+  var myChart = new Chart(ctx, {
+    type: 'pie',
+    data: {
+      labels: 
+    }
+  })
+}
 
 function handleFalse(event) {
   console.log(event.target);

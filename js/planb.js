@@ -41,6 +41,18 @@ var interCount = 0;
 var intraCount = 0;
 // }
 
+//Empty array for IQ types
+var iqArray = [];
+
+// Empty arrays for each IQ type
+var linguistArray = [];
+var logicArray = [];
+var musicalArray = [];
+var bodilyArray = [];
+var spatialAray = [];
+var interArray = [];
+var intraArray = [];
+
 var testQuestions = [];
 
 // For each question:
@@ -56,10 +68,17 @@ var IqType = function (qvalue, category, index, filepath) {
   this.index = index;
   this.filepath = filepath;
 
-  testQuestions.push(this);
-}
+  // var linguistCount = 0;
+  // var logicCount = 0;
+  // var musicalCount = 0;
+  // var bodilyCount = 0;
+  // var spatialCount = 0;
+  // var interCount = 0;
+  // var intraCount = 0;
 
-// Objects/test questions
+  testQuestions.push(this);
+  iqArray.push(this);
+};
 
 new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
 new IqType('If I am angry or happy, I usually know exactly why.', 'intra', '2', 'audio/q2.mp3');
@@ -96,6 +115,7 @@ new IqType('I’m sensitive to the expressions on other people’s faces.', 'log
 new IqType('I stay “in touch” with my moods. I have no trouble identifying them.', 'logic', '33', 'audio/q33.mp3');
 new IqType('I am sensitive to the moods of others.', 'logic', '34', 'audio/q34.mp3');
 new IqType('I have a good sense of what others think of me.', 'logic', '35', 'audio/q35.mp3');
+
 
 console.log('questions ', testQuestions);
 console.log(testQuestions[0].qvalue);
@@ -173,24 +193,40 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (qcounter<7) {
+  if (qcounter<testQuestions.length) {
     console.log('test q current q is at' ,testQuestions[currentQuestion].category);
     console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist'){
-      linguistCount++;
+      // linguistCount++;
+      // iqArray.push(linguistCount); // added this and other pushes for categories in peer programming
+      currentQuestion.linguistCount++;
     }else if(testQuestions[currentQuestion].category === 'logic'){
       logicCount++;
+      iqArray.push(logicCount);
+      // currentQuestion.logicCount++;
     }else if(testQuestions[currentQuestion].category === 'musical'){
       musicalCount++;
+      iqArray.push(musicalCount);
+      // currentQuestion.musicalCount++;
     }else if(testQuestions[currentQuestion].category === 'bodily'){
       bodilyCount++;
+      iqArray.push(bodilyCount);
+      // currentQuestion.bodilyCount++;
     }else if(testQuestions[currentQuestion].category === 'spatial'){
       spatialCount++;
+      iqArray.push(spatialCount);
+      // currentQuestion.spatialCount++;
     }else if(testQuestions[currentQuestion].category === 'inter'){
       interCount++;
+      iqArray.push(interCount);
+      // currentQuestion.interCount++;
     }else{
       intraCount++;
-    };
+
+      iqArray.push(intraCount);
+      // iqArray[currentQuestion].intraCount += 1;
+    }
+
     console.log('music is ', musicalCount);
     console.log('linguist is ', linguistCount);
     console.log('visual is ', spatialCount);
@@ -199,33 +235,57 @@ function handleTrue(event) {
     console.log('bodily is ', bodilyCount);
     console.log('logic is ', logicCount);
     console.log(event.target);
-  //  clear for next round
+
+    console.log('***IQ ARRAY: ARE THERE SEVEN?!?!*** ', iqArray);
+    //  clear for next round
 
   currentQuestion++;
   qcounter++;
 
-  showQuestion();
-  showTitle();
-  // showAudio();
-  showAnswers();
-  } 
-// console.log('currentQuestion ',parseInt(currentQuestion));
+
+    showQuestion();
+    showTitle();
+    // showAudio();
+    showAnswers();
+  } else {
+    console.log('DONE');
+    showMeResults();
+  }
+  // createChart();
 
 // types[testQuestions[parseInt(currentQuestion)].category]++;
 // console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
 }
 
+// function createChart() {
+//   var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'teal', 'magenta'];
+//   var ctx = document.getElementById('myChart').getContent('2d');
+//   ctx.canvas.width = 400;
+//   ctx.canvas.height = 275;
+//   var myChart = new Chart(ctx, {
+//     type: 'pie',
+//     data: {
+//       labels: 
+//     }
+//   })
+// }
+
 
 function handleFalse(event) {
   console.log(event.target);
-if (qcounter<35){
+
+  if (qcounter<testQuestions.length){
   // clear for next round
-  qcounter++;
-  currentQuestion++;
-  showQuestion();
-  showTitle();
-  // showAudio();
-  showAnswers();
+
+    qcounter++;
+    currentQuestion++;
+    showQuestion();
+    showTitle();
+    // showAudio();
+    showAnswers()
+    showMeResults();
+  };
+
 
 }
 }
@@ -237,3 +297,29 @@ if (qcounter<35){
 // event handler will add to general counter and intelligence specific counters as well as prompting next question
 
 // create a function that will push new questions into the template
+
+function showMeResults() {
+
+  // Bring to a close by turning off the event handler
+  document.getElementById("true").removeEventListener('click', handleTrue);
+  document.getElementById("false").removeEventListener('click', handleFalse);
+
+  // tuck away the test forms
+  surveytop.parentElement.removeChild(surveytop);
+  surveymid.parentElement.removeChild(surveymid);
+  surveybottom.parentElement.removeChild(surveybottom);
+
+
+
+  // get the results section from DOM
+  var intelReport = document.getElementById('results');
+
+  // Assign content as empty string so we can dynamically create
+  intelReport.innerHTML = '';
+  var headline = document.createElement('h2');
+  headline.innerHTML = `${userLog[UserInfo].name}, your strongest intelligence is: [intelligence here]`
+  // Attach it, or it won't show up:
+  intelReport.appendChild(headline);
+  
+  // and display the pic chart
+}
