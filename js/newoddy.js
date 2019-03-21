@@ -1,7 +1,20 @@
+//These will feed our chart
+var  myPieChart;
+var chartDrawn = false;
+var iqArray = [];
+var labels = [
+  'Linguistic',
+  'Logical-Mathematical',
+  'Musical',
+  'Bodily-Kinesthetic',
+  'Spatial',
+  'Interpersonal',
+  'Intrapersonal',
+];
 
 // now we are going to build out the data object for our chart
 var data = {
-  labels: ['ling','log','music','bod','spat','inter','intra',],
+  labels: labels,
   datasets: [
     {
       label: 'Intelligence Ratio',
@@ -27,7 +40,7 @@ function createChart() {
   // params are ctx and a big damn object with at least type and data
 
   myPieChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: data,
     // options: options
   });
