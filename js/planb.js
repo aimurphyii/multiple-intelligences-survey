@@ -16,20 +16,19 @@ var qtitle = document.getElementById('qtitle');
 var qaudio = document.getElementById('qaudio');
 var question = document.createElement('p');
 
-// survey.parentElement.removeChild(survey);
-
-// var birthDate = document.getElementsByName('birthdate');
-// var testDate = document.getElementsByName('date');
-
-var qcounter = 0;
-
+// how we will create the user object
 var UserInfo = function (name, birthdate, testdate) {
   this.name = name;
   this.birthdate = birthdate;
   this.testdate = testdate;
 };
 
+// this is where we access our user info
 var savedUser = [];
+
+
+// this guides our script to populate and refer to our questions, it also keeps a running count of where we are in the survey
+var currentQuestion = 0;
 
 // make arrays for each intelligence to count up number of trues. trues will be pushed up from each question object on click
 // var types={
@@ -42,18 +41,21 @@ var interCount = 0;
 var intraCount = 0;
 // }
 
-//Empty array for IQ types
+//These will feed our chart
+var  myPieChart;
+var chartDrawn = false;
 var iqArray = [];
+var labels = [
+  'Linguistic',
+  'Logical-Mathematical',
+  'Musical',
+  'Bodily-Kinesthetic',
+  'Spatial',
+  'Interpersonal',
+  'Intrapersonal',
+];
 
-// Empty arrays for each IQ type
-var linguistArray = [];
-var logicArray = [];
-var musicalArray = [];
-var bodilyArray = [];
-var spatialAray = [];
-var interArray = [];
-var intraArray = [];
-
+// this array stores all of our question objects
 var testQuestions = [];
 
 // For each question:
@@ -69,16 +71,7 @@ var IqType = function (qvalue, category, index, filepath) {
   this.index = index;
   this.filepath = filepath;
 
-  // var linguistCount = 0;
-  // var logicCount = 0;
-  // var musicalCount = 0;
-  // var bodilyCount = 0;
-  // var spatialCount = 0;
-  // var interCount = 0;
-  // var intraCount = 0;
-
   testQuestions.push(this);
-  iqArray.push(this);
 };
 
 new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
@@ -146,12 +139,8 @@ function handleUserInfo(event) {
 
 userForm.addEventListener('submit', handleUserInfo);
 
-// build a function to call our objects
-
-var currentQuestion = 0;
 
 // this funciton will handle the rendering of new questions
-
 function showTitle() {
   // generate Q title and counter
   qtitle.textContent = `Question ${testQuestions[currentQuestion].index} of 35`;
@@ -166,7 +155,6 @@ function showTitle() {
 
 function showQuestion() {
   // generate test question
-
   question.innerHTML =
     `<div class="${testQuestions[currentQuestion].category}" id=\"question\">${testQuestions[currentQuestion].qvalue}</div>`;
   surveymid.appendChild(question);
@@ -180,51 +168,33 @@ function showAnswers() {
 
   answerFalse.innerHTML = '<div id=\"false\">F</div>';
   testanswer.appendChild(answerFalse);
-
 }
 
 
 // accept answers
-
 // create listener for each true and false
 // create if things we want to happen/else run fn to show next prompt
 answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (qcounter<testQuestions.length) {
+  if (currentQuestion<testQuestions.length) {
     console.log('test q current q is at' ,testQuestions[currentQuestion].category);
     console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist'){
       linguistCount++;
-      iqArray.push(linguistCount);
-      // iqArray.push(linguistCount); // added this and other pushes for categories in peer programming
-      // currentQuestion.linguistCount++;
     }else if(testQuestions[currentQuestion].category === 'logic'){
       logicCount++;
-      iqArray.push(logicCount);
-      // currentQuestion.logicCount++;
     }else if(testQuestions[currentQuestion].category === 'musical'){
       musicalCount++;
-      iqArray.push(musicalCount);
-      // currentQuestion.musicalCount++;
     }else if(testQuestions[currentQuestion].category === 'bodily'){
       bodilyCount++;
-      iqArray.push(bodilyCount);
-      // currentQuestion.bodilyCount++;
     }else if(testQuestions[currentQuestion].category === 'spatial'){
       spatialCount++;
-      iqArray.push(spatialCount);
-      // currentQuestion.spatialCount++;
     }else if(testQuestions[currentQuestion].category === 'inter'){
       interCount++;
-      iqArray.push(interCount);
-      // currentQuestion.interCount++;
     }else{
       intraCount++;
-
-      iqArray.push(intraCount);
-      // iqArray[currentQuestion].intraCount += 1;
     }
 
     console.log('music is ', musicalCount);
@@ -236,12 +206,9 @@ function handleTrue(event) {
     console.log('logic is ', logicCount);
     console.log(event.target);
 
-    console.log('***IQ ARRAY: ARE THERE SEVEN?!?!*** ', iqArray);
     //  clear for next round
 
   currentQuestion++;
-  qcounter++;
-
 
     showQuestion();
     showTitle();
@@ -251,43 +218,23 @@ function handleTrue(event) {
     console.log('DONE');
     showMeResults();
   }
-  // createChart();
-
-// types[testQuestions[parseInt(currentQuestion)].category]++;
-// console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
 }
 
-// function createChart() {
-//   var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'teal', 'magenta'];
-//   var ctx = document.getElementById('myChart').getContent('2d');
-//   ctx.canvas.width = 400;
-//   ctx.canvas.height = 275;
-//   var myChart = new Chart(ctx, {
-//     type: 'pie',
-//     data: {
-//       labels: 
-//     }
-//   })
-// }
-
-
+// handles false answers by moving to next question and counting up or rendering results
 function handleFalse(event) {
   console.log(event.target);
 
-  if (qcounter<testQuestions.length){
-  // clear for next round
+  if (currentQuestion<testQuestions.length){
 
-    qcounter++;
     currentQuestion++;
     showQuestion();
     showTitle();
     // showAudio();
     showAnswers()
+  }else{
     showMeResults();
   };
-
-
-}
+  }
 
 // console.log(musical);
 
@@ -295,9 +242,15 @@ function handleFalse(event) {
 
 // event handler will add to general counter and intelligence specific counters as well as prompting next question
 
-// create a function that will push new questions into the template
-
 function showMeResults() {
+// create and render chart data
+  iqArray.push(parseInt(linguistCount));
+  iqArray.push(parseInt(logicCount));
+  iqArray.push(parseInt(musicalCount));
+  iqArray.push(parseInt(bodilyCount));
+  iqArray.push(parseInt(spatialCount));
+  iqArray.push(parseInt(interCount));
+  iqArray.push(parseInt(intraCount));
 
   // Bring to a close by turning off the event handler
   document.getElementById("true").removeEventListener('click', handleTrue);
@@ -307,8 +260,6 @@ function showMeResults() {
   surveytop.parentElement.removeChild(surveytop);
   surveymid.parentElement.removeChild(surveymid);
   surveybottom.parentElement.removeChild(surveybottom);
-
-
 
   // get the results section from DOM
   var intelReport = document.getElementById('results');
@@ -320,5 +271,43 @@ function showMeResults() {
   // Attach it, or it won't show up:
   intelReport.appendChild(headline);
   
-  // and display the pic chart
+  // and display the pie chart
+  createChart();
+}
+
+// now we are going to build out the data object for our chart
+var data = {
+  // created an array with strings for naming puroses
+  labels: labels,
+  datasets: [
+    {
+      // using repurpsed array to render type counts for chart data
+      data: iqArray,
+      // used corresponding colors from css
+      backgroundColor: [
+        'rgba(204, 68, 75, 0.25)',
+        'rgba(255, 111, 188, 0.25)',
+        'rgba(133, 253, 255, 0.25)',
+        'rgba(112, 255, 200, 0.25)',
+        'rgba(89, 99, 232, 0.25)',
+        'rgba(224, 255, 98, 0.25)',
+        'rgba(232, 170, 89, 0.25)',
+      ],
+    }
+  ]
+};
+// make a chart
+function createChart() {
+  // this is the line that is giving grief
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+  // this is where the chart is actually built, the data traces back to our data object above
+
+  myPieChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    // options: options
+  });
+  // change the boolean for our chart
+  chartDrawn = true;
 }
