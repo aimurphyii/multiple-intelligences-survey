@@ -55,32 +55,32 @@ learn languages, and the capacity to use language to accomplish certain goals. T
 intelligence includes the ability to effectively use language to express oneself rhetorically
 or poetically; and language as a means to remember information. Writers, poets, lawyers
 and speakers are among those that Howard Gardner sees as having high linguistic
-intelligence. Potential careers: writer, editor, attorney, politician, public speaker.
+intelligence. Potential careers: writer, editor, attorney, politician, public speaker, historian, librarian, journalist, teacher, tour guide, poet, broadcaster, writer, actor, speech pathologist, translator, interpreter
 
 Logical-mathematical intelligence consists of the capacity to analyze problems
 logically, carry out mathematical operations, and investigate issues scientifically. In
 Howard Gardner's words, it entails the ability to detect patterns, reason deductively and
-think logically. This intelligence is most often associated with scientific and mathematical thinking. Potential careers: accountant, computer programmer, engineer, scientist, detective.
+think logically. This intelligence is most often associated with scientific and mathematical thinking. Potential careers: accountant, computer programmer, engineer, scientist, detective, computer analyst, computer technician, database designer, economist, lawyer, mathematician, network analyst, financial analyst, investment broker, pharmacist, chemist, physician, physicist, researcher, statistician.
 
 
 Musical intelligence involves skill in the performance, composition, and appreciation of
 musical patterns. It encompasses the capacity to recognize and compose musical pitches,
-tones, and rhythms. According to Howard Gardner musical intelligence runs in an almost structural parallel to linguistic intelligence. Potential careers: musician, singer, composer, director.
+tones, and rhythms. According to Howard Gardner musical intelligence runs in an almost structural parallel to linguistic intelligence. Potential careers: musician, composer, director, audiologist, choir director, dancer, music conductor, music critic, music promoter, music publisher, music retailer, music teacher, music therapist, piano tuner, recording engineer, singer, songwriter, sound editor, sound engineer, speech pathologist.
 
 Bodily-kinesthetic intelligence entails the potential of using one's whole body or parts of
 the body to solve problems. It is the ability to use mental abilities to coordinate bodily
-movements. Howard Gardner sees mental and physical activity as related. Potential careers: athlete, physical therapist, occupational therapist, mechanic, chef, dancer, actor, construction worker. 
+movements. Howard Gardner sees mental and physical activity as related. Potential careers: athlete, physical therapist, occupational therapist, mechanic, chef, dancer, actor, construction worker, choreographer, performer, physical education instructor, craftsperson, surgeon, farmer, carpenter, park warden, firefighter, paramedic.
 
 Spatial intelligence involves the potential to recognize and use the patterns of wide
-space and more confined areas. Potential careers: artist, architect, inventor, bus driver.
+space and more confined areas. Potential careers: artist, architect, inventor, bus driver, graphic designer, advertiser, engineer, fashion designer, interior decorator, film animator, photographer, pilot, sailor, cartographer, painter, sculptor, strategic planner, surveyor, truck driver, urban planner.
 
 Interpersonal intelligence is concerned with the capacity to understand the intentions,
 motivations and desires of other people. It allows people to work effectively with others.
-Educators, salespeople, religious and political leaders and counselors all need a welldeveloped interpersonal intelligence. Potential careers: counselor, teacher, sales person, politician, management. 
+Educators, salespeople, religious and political leaders and counselors all need a welldeveloped interpersonal intelligence. Potential careers: counselor, teacher, politician, manager, diplomat, leader, mediator, human resources executive, social worker, receptionist, sales representative, child care worker, coach.
 
 Intrapersonal intelligence entails the capacity to understand oneself, to appreciate one's
 feelings, fears and motivations. In Howard Gardner's view it involves having an effective
-working model of ourselves, and to be able to use such information to regulate our lives. Potential careers: writer, counselor.
+working model of ourselves, and to be able to use such information to regulate our lives. Potential careers: writer, counselor, psychologist, philosopher, career counselor, consultant, criminologist, program planner, entrepreneur.
 
 
 
