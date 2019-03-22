@@ -264,11 +264,23 @@ function showMeResults() {
   surveymid.parentElement.removeChild(surveymid);
   surveybottom.parentElement.removeChild(surveybottom);
 
+  // create a fucntion to locate strongest type by string
+  var largest = 0;
+for (var i=0; i<=largest;i++){
+    if (iqArray[i]>largest) {
+        var largest=iqArray[i];
+        var label = labels[i];
+    }
+}
+
+
+console.log(largest);
+console.log('label is ', label);
 
   // Assign content as empty string so we can dynamically create
   intelReport.innerHTML = '';
   var headline = document.createElement('h2');
-  headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: [intelligence here]`;
+  headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: ${label}!`;
   // Attach it, or it won't show up:
   intelReport.appendChild(headline);
 
