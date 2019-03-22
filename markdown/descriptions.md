@@ -113,8 +113,11 @@ What is the Theory of Multiple Intelligences?
 The theory of multiple intelligences was developed in 1983 by Howard Gardener. Instead of a single Full Scale IQ score that conventional intelligence tests produce which can have a fairly narrow and specific focus, Gardener proposed that there are seven different areas that a person can be intelligent in and everyone is a different balance of these. He has since added two additional areas, Naturalistic and Existential. All nine of these areas can also interact with each other as well, as learning does not occur in isolation. This quiz will only focus on the original seven areas.
 
 
-Public school that has incorporated the theory of Multiple Intelligences into their daily curriculum: 
+Examples of schools that has incorporated the theory of Multiple Intelligences into their daily curriculum: 
 Lincoln Prairie - https://lincolnprairie.sd54.org/resources/multiple-intelligences/
+New City School - https://www.newcityschool.org/
+Brown Street Academy - http://www5.milwaukee.k12.wi.us/school/brown/
+
 
 
 Disclaimer/decsription on results page:
