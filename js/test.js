@@ -303,11 +303,13 @@ function createChart() {
   // this is the line that is giving grief
   
   var ctx = document.getElementById('myChart').getContext('2d');
+  ctx.canvas.width = 200;
+  ctx.canvas.height = 75;
 
   // this is where the chart is actually built, the data traces back to our data object above
 
   myPieChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: data,
     // options: options
   });
