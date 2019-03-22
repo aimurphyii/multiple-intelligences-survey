@@ -64,6 +64,19 @@ h2{
   line-height: 30px;
 }
 
+.head-pics{
+  /* float: left; */
+  width: 500px;
+  height: auto;
+  display: inline;
+}
+
+#imgtest{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
 /* test */
 #question{
   margin: 5px auto;
@@ -163,11 +176,16 @@ form button:hover {
 }
 .right{
   float: right;
-  margin-right: 200px;
+  width: 480px;
 }
 
-.goal{
-  max-width: 500px;
+.left{
+  float: left;
+  width: 480px;
+}
+
+.button{
+  max-width: 200px;
   float: left;
 }
 
