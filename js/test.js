@@ -15,20 +15,22 @@ var answerFalse = document.createElement('li');
 var qtitle = document.getElementById('qtitle');
 var qaudio = document.getElementById('qaudio');
 var question = document.createElement('p');
+// get the results section from DOM
+var intelReport = document.getElementById('results');
 
-// survey.parentElement.removeChild(survey);
-
-// var birthDate = document.getElementsByName('birthdate');
-// var testDate = document.getElementsByName('date');
-
-var qcounter = 0;
-
+// how we will create the user object
 var UserInfo = function (name, birthdate, testdate) {
   this.name = name;
   this.birthdate = birthdate;
   this.testdate = testdate;
 };
 
+// this is where we access our user info
+var savedUser = [];
+
+
+// this guides our script to populate and refer to our questions, it also keeps a running count of where we are in the survey
+var currentQuestion = 0;
 
 // make arrays for each intelligence to count up number of trues. trues will be pushed up from each question object on click
 // var types={
@@ -41,18 +43,21 @@ var interCount = 0;
 var intraCount = 0;
 // }
 
-//Empty array for IQ types
+//These will feed our chart
+var  myPieChart;
+var chartDrawn = false;
 var iqArray = [];
+var labels = [
+  'Linguistic',
+  'Logical-Mathematical',
+  'Musical',
+  'Bodily-Kinesthetic',
+  'Spatial',
+  'Interpersonal',
+  'Intrapersonal',
+];
 
-// Empty arrays for each IQ type
-var linguistArray = [];
-var logicArray = [];
-var musicalArray = [];
-var bodilyArray = [];
-var spatialAray = [];
-var interArray = [];
-var intraArray = [];
-
+// this array stores all of our question objects
 var testQuestions = [];
 
 // For each question:
@@ -68,16 +73,7 @@ var IqType = function (qvalue, category, index, filepath) {
   this.index = index;
   this.filepath = filepath;
 
-  // var linguistCount = 0;
-  // var logicCount = 0;
-  // var musicalCount = 0;
-  // var bodilyCount = 0;
-  // var spatialCount = 0;
-  // var interCount = 0;
-  // var intraCount = 0;
-
   testQuestions.push(this);
-  iqArray.push(this);
 };
 
 new IqType('I’d rather draw a map than give someone verbal directions.', 'spatial', '1', 'audio/q1.mp3');
@@ -85,36 +81,36 @@ new IqType('If I am angry or happy, I usually know exactly why.', 'intra', '2', 
 new IqType('I can play (or used to play) a musical instrument.', 'musical', '3', 'audio/q3.mp3');
 new IqType('I can associate music with my moods.', 'musical', '4', 'audio/q4.mp3');
 new IqType('I can add or multiply quickly in my head.', 'logic', '5', 'audio/q5.mp3');
-new IqType('I can help a friend sort out strong feelings because I successfully dealt with similar feelings myself.', 'inter', '6', 'audio/q6.mp3');
+new IqType('I can help a friend sort out strong feelings because I successfully dealt with similar feelings myself.', 'intra', '6', 'audio/q6.mp3');
 new IqType('I like to work with calculators and computers.', 'logic', '7', 'audio/q7.mp3');
-new IqType('I pick up new dance steps fast.', 'logic', '8', 'audio/q8.mp3');
-new IqType('It is easy for me to say what I think in an argument or debate.', 'logic', '9', 'audio/q9.mp3');
-new IqType('I enjoy a good lecture, speech, or sermon.', 'logic', '10', 'audio/q10.mp3');
-new IqType('I always know north from south no matter where I am.', 'logic', '11', 'audio/q11.mp3');
-new IqType('I like to gather together groups of people for parties of special events.', 'logic', '12', 'audio/q12.mp3');
-new IqType('Life seems empty without music.', 'logic', '13', 'audio/q13.mp3');
-new IqType('I always understand the drawings that come with new gadgets or appliances.', 'logic', '14', 'audio/q14.mp3');
+new IqType('I pick up new dance steps fast.', 'bodily', '8', 'audio/q8.mp3');
+new IqType('It is easy for me to say what I think in an argument or debate.', 'linguist', '9', 'audio/q9.mp3');
+new IqType('I enjoy a good lecture, speech, or sermon.', 'linguist', '10', 'audio/q10.mp3');
+new IqType('I always know north from south no matter where I am.', 'spatial', '11', 'audio/q11.mp3');
+new IqType('I like to gather together groups of people for parties of special events.', 'inter', '12', 'audio/q12.mp3');
+new IqType('Life seems empty without music.', 'musical', '13', 'audio/q13.mp3');
+new IqType('I always understand the drawings that come with new gadgets or appliances.', 'spatial', '14', 'audio/q14.mp3');
 new IqType('I like to work puzzles and play games.', 'logic', '15', 'audio/q15.mp3');
-new IqType('Learning to ride a bike (or skates) was easy.', 'logic', '16', 'audio/q16.mp3');
-new IqType('I am irritated when I hear an argument or statement that sounds illogical.', 'logic', '17', 'audio/q17.mp3');
-new IqType('I can convince other people to follow my plans.', 'logic', '18', 'audio/q18.mp3');
-new IqType('My sense of balance and coordination is good.', 'logic', '19', 'audio/q19.mp3');
+new IqType('Learning to ride a bike (or skates) was easy.', 'bodily', '16', 'audio/q16.mp3');
+new IqType('I am irritated when I hear an argument or statement that sounds illogical.', 'linguist', '17', 'audio/q17.mp3');
+new IqType('I can convince other people to follow my plans.', 'inter', '18', 'audio/q18.mp3');
+new IqType('My sense of balance and coordination is good.', 'bodily', '19', 'audio/q19.mp3');
 new IqType('I often see patterns and relationships between numbers faster and easier than others do.', 'logic', '20', 'audio/q20.mp3');
-new IqType('I enjoy building models (or sculpting).', 'logic', '21', 'audio/q21.mp3');
-new IqType('I’m good at finding the fine points of word meanings.', 'logic', '22', 'audio/q22.mp3');
-new IqType('I can look at an object one way and see it turned sideways or backwards just as easily.', 'logic', '23', 'audio/q23.mp3');
-new IqType('I often connect a piece of music with some event in my life.', 'logic', '24', 'audio/q24.mp3');
+new IqType('I enjoy building models (or sculpting).', 'bodily', '21', 'audio/q21.mp3');
+new IqType('I’m good at finding the fine points of word meanings.', 'linguist', '22', 'audio/q22.mp3');
+new IqType('I can look at an object one way and see it turned sideways or backwards just as easily.', 'spatial', '23', 'audio/q23.mp3');
+new IqType('I often connect a piece of music with some event in my life.', 'musical', '24', 'audio/q24.mp3');
 new IqType('I like to work with numbers and figures.', 'logic', '25', 'audio/q25.mp3');
-new IqType('I like to sit quietly and reflect on my inner feelings.', 'logic', '26', 'audio/q26.mp3');
-new IqType('Just looking at shapes of buildings and structures is pleasurable to me.', 'logic', '27', 'audio/q27.mp3');
-new IqType('I like to hum, whistle, and sing in the shower or when I’m alone.', 'logic', '28', 'audio/q28.mp3');
-new IqType('I’m good at athletics.', 'logic', '29', 'audio/q29.mp3');
-new IqType('I enjoy writing detailed letters to friends.', 'logic', '30', 'audio/q30.mp3');
-new IqType('I’m usually aware of the expression on my face.', 'logic', '31', 'audio/q31.mp3');
-new IqType('I’m sensitive to the expressions on other people’s faces.', 'logic', '32', 'audio/q32.mp3');
-new IqType('I stay “in touch” with my moods. I have no trouble identifying them.', 'logic', '33', 'audio/q33.mp3');
-new IqType('I am sensitive to the moods of others.', 'logic', '34', 'audio/q34.mp3');
-new IqType('I have a good sense of what others think of me.', 'logic', '35', 'audio/q35.mp3');
+new IqType('I like to sit quietly and reflect on my inner feelings.', 'intra', '26', 'audio/q26.mp3');
+new IqType('Just looking at shapes of buildings and structures is pleasurable to me.', 'spatial', '27', 'audio/q27.mp3');
+new IqType('I like to hum, whistle, and sing in the shower or when I’m alone.', 'musical', '28', 'audio/q28.mp3');
+new IqType('I’m good at athletics.', 'bodily', '29', 'audio/q29.mp3');
+new IqType('I enjoy writing detailed letters to friends.', 'linguist', '30', 'audio/q30.mp3');
+new IqType('I’m usually aware of the expression on my face.', 'intra', '31', 'audio/q31.mp3');
+new IqType('I’m sensitive to the expressions on other people’s faces.', 'inter', '32', 'audio/q32.mp3');
+new IqType('I stay “in touch” with my moods. I have no trouble identifying them.', 'intra', '33', 'audio/q33.mp3');
+new IqType('I am sensitive to the moods of others.', 'inter', '34', 'audio/q34.mp3');
+new IqType('I have a good sense of what others think of me.', 'inter', '35', 'audio/q35.mp3');
 
 
 console.log('questions ', testQuestions);
@@ -130,10 +126,8 @@ function handleUserInfo(event) {
   var testDate = event.target.date.value;
 
   var newUser = new UserInfo(userName, birthDate, testDate);
+  savedUser.push(newUser);
 
-  userLog.push(newUser);
-  console.log('userLog is ', userLog);
-  console.log('newUser is ', newUser);
   // we need to figure out how to log dates in and in what format
 
   // this will tuck away our form once submitted
@@ -147,12 +141,8 @@ function handleUserInfo(event) {
 
 userForm.addEventListener('submit', handleUserInfo);
 
-// build a function to call our objects
-
-var currentQuestion = 0;
 
 // this funciton will handle the rendering of new questions
-
 function showTitle() {
   // generate Q title and counter
   qtitle.textContent = `Question ${testQuestions[currentQuestion].index} of 35`;
@@ -167,7 +157,6 @@ function showTitle() {
 
 function showQuestion() {
   // generate test question
-
   question.innerHTML =
     `<div class="${testQuestions[currentQuestion].category}" id=\"question\">${testQuestions[currentQuestion].qvalue}</div>`;
   surveymid.appendChild(question);
@@ -181,67 +170,47 @@ function showAnswers() {
 
   answerFalse.innerHTML = '<div id=\"false\">F</div>';
   testanswer.appendChild(answerFalse);
-
 }
 
 
 // accept answers
-
 // create listener for each true and false
 // create if things we want to happen/else run fn to show next prompt
 answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (qcounter<testQuestions.length) {
+  if (currentQuestion<testQuestions.length) {
     console.log('test q current q is at' ,testQuestions[currentQuestion].category);
     console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist'){
-      // linguistCount++;
-      // iqArray.push(linguistCount); // added this and other pushes for categories in peer programming
-      currentQuestion.linguistCount++;
+      linguistCount++;
     }else if(testQuestions[currentQuestion].category === 'logic'){
       logicCount++;
-      iqArray.push(logicCount);
-      // currentQuestion.logicCount++;
     }else if(testQuestions[currentQuestion].category === 'musical'){
       musicalCount++;
-      iqArray.push(musicalCount);
-      // currentQuestion.musicalCount++;
     }else if(testQuestions[currentQuestion].category === 'bodily'){
       bodilyCount++;
-      iqArray.push(bodilyCount);
-      // currentQuestion.bodilyCount++;
     }else if(testQuestions[currentQuestion].category === 'spatial'){
       spatialCount++;
-      iqArray.push(spatialCount);
-      // currentQuestion.spatialCount++;
     }else if(testQuestions[currentQuestion].category === 'inter'){
       interCount++;
-      iqArray.push(interCount);
-      // currentQuestion.interCount++;
     }else{
       intraCount++;
-
-      iqArray.push(intraCount);
-      // iqArray[currentQuestion].intraCount += 1;
     }
 
     console.log('music is ', musicalCount);
     console.log('linguist is ', linguistCount);
-    console.log('visual is ', spatialCount);
+    console.log('spatial is ', spatialCount);
     console.log('intra is ', intraCount);
     console.log('inter is ', interCount);
     console.log('bodily is ', bodilyCount);
     console.log('logic is ', logicCount);
     console.log(event.target);
 
-    console.log('***IQ ARRAY: ARE THERE SEVEN?!?!*** ', iqArray);
     //  clear for next round
 
   currentQuestion++;
-  qcounter++;
-
 
     showQuestion();
     showTitle();
@@ -251,44 +220,23 @@ function handleTrue(event) {
     console.log('DONE');
     showMeResults();
   }
-  // createChart();
-
-// types[testQuestions[parseInt(currentQuestion)].category]++;
-// console.log('types are', types[testQuestions[parseInt(currentQuestion)].category]);
 }
 
-// function createChart() {
-//   var colors = ['red', 'orange', 'yellow', 'green', 'blue', 'purple', 'teal', 'magenta'];
-//   var ctx = document.getElementById('myChart').getContent('2d');
-//   ctx.canvas.width = 400;
-//   ctx.canvas.height = 275;
-//   var myChart = new Chart(ctx, {
-//     type: 'pie',
-//     data: {
-//       labels: 
-//     }
-//   })
-// }
-
-
+// handles false answers by moving to next question and counting up or rendering results
 function handleFalse(event) {
   console.log(event.target);
 
-  if (qcounter<testQuestions.length){
-  // clear for next round
+  if (currentQuestion<testQuestions.length-1){
 
-    qcounter++;
     currentQuestion++;
     showQuestion();
     showTitle();
     // showAudio();
     showAnswers()
+  }else{
     showMeResults();
   };
-
-
-}
-}
+  }
 
 // console.log(musical);
 
@@ -296,9 +244,16 @@ function handleFalse(event) {
 
 // event handler will add to general counter and intelligence specific counters as well as prompting next question
 
-// create a function that will push new questions into the template
-
 function showMeResults() {
+// create and render chart data
+  iqArray.push(parseInt(linguistCount));
+  iqArray.push(parseInt(logicCount));
+  iqArray.push(parseInt(musicalCount));
+  iqArray.push(parseInt(bodilyCount));
+  iqArray.push(parseInt(spatialCount));
+  iqArray.push(parseInt(interCount));
+  iqArray.push(parseInt(intraCount));
+  console.log('iqarray is currently, ', iqArray);
 
   // Bring to a close by turning off the event handler
   document.getElementById("true").removeEventListener('click', handleTrue);
@@ -310,16 +265,52 @@ function showMeResults() {
   surveybottom.parentElement.removeChild(surveybottom);
 
 
-
-  // get the results section from DOM
-  var intelReport = document.getElementById('results');
-
   // Assign content as empty string so we can dynamically create
   intelReport.innerHTML = '';
   var headline = document.createElement('h2');
-  headline.innerHTML = `${userLog[UserInfo].name}, your strongest intelligence is: [intelligence here]`
+  headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: [intelligence here]`
   // Attach it, or it won't show up:
   intelReport.appendChild(headline);
   
-  // and display the pic chart
+  // and display the pie chart
+  createChart();
+}
+
+// now we are going to build out the data object for our chart
+var data = {
+  // created an array with strings for naming puroses
+  labels: labels,
+  datasets: [
+    {
+      // using repurpsed array to render type counts for chart data
+      data: iqArray,
+      // used corresponding colors from css
+      backgroundColor: [
+        'rgba(204, 68, 75, 0.25)',
+        'rgba(255, 111, 188, 0.25)',
+        'rgba(133, 253, 255, 0.25)',
+        'rgba(112, 255, 200, 0.25)',
+        'rgba(89, 99, 232, 0.25)',
+        'rgba(224, 255, 98, 0.25)',
+        'rgba(232, 170, 89, 0.25)',
+      ],
+    }
+  ]
+};
+
+// make a chart
+function createChart() {
+  // this is the line that is giving grief
+  
+  var ctx = document.getElementById('myChart').getContext('2d');
+
+  // this is where the chart is actually built, the data traces back to our data object above
+
+  myPieChart = new Chart(ctx, {
+    type: 'pie',
+    data: data,
+    // options: options
+  });
+  // change the boolean for our chart
+  chartDrawn = true;
 }
