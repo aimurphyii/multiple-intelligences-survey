@@ -17,7 +17,7 @@ nav li{
   line-height: 86px;
 }
 
-a{
+nav a{
   color: #E8F6F7;
   text-decoration: none;
   padding-top:35px;
@@ -26,11 +26,11 @@ a{
   padding-right:20px;
 }
 
-a:visited{
+nav a:visited{
   color:#E8F6F7;
 }
 
-a:hover{
+nav a:hover{
   color: #D3FEFF;
   background: #437D7F;
   line-height: 80px;
@@ -44,11 +44,29 @@ a:hover{
 } */
 
 h1{
-  font-size: 36px;
+  font-size: 40px;
+  margin-left: 20px;
+  text-shadow: 1px 1px 2px #888;
+  align-self: center;
 }
+
+.quote{
+  float: right;
+  font-size: large;
+  text-shadow: 1px 1px 2px #888;
+  align-self: center;
+  max-width: 450px;
+  margin-right: 30px;
+}
+
 header, section{
   width: 80%;
   margin: 20px auto;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
 }
 
 h2{
@@ -65,13 +83,12 @@ h2{
 }
 
 .head-pics{
-  /* float: left; */
-  width: 500px;
+  width: 450px;
   height: auto;
   display: inline;
 }
 
-#imgtest{
+#imgflex{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -178,6 +195,7 @@ form button:hover {
   float: right;
   width: 480px;
 }
+
 
 .left{
   float: left;
