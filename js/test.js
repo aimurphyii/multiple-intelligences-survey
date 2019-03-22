@@ -271,7 +271,7 @@ function showMeResults() {
   headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: [intelligence here]`
   // Attach it, or it won't show up:
   intelReport.appendChild(headline);
-  
+
   // and display the pie chart
   createChart();
 }
@@ -301,10 +301,12 @@ var data = {
 // make a chart
 function createChart() {
   // this is the line that is giving grief
-  
+
   var ctx = document.getElementById('myChart').getContext('2d');
   ctx.canvas.width = 200;
   ctx.canvas.height = 75;
+
+
 
   // this is where the chart is actually built, the data traces back to our data object above
 
