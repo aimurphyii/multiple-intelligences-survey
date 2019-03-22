@@ -180,22 +180,22 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (currentQuestion<testQuestions.length) {
-    console.log('test q current q is at' ,testQuestions[currentQuestion].category);
+  if (currentQuestion < testQuestions.length) {
+    console.log('test q current q is at', testQuestions[currentQuestion].category);
     console.log(testQuestions[currentQuestion].qvalue);
-    if (testQuestions[currentQuestion].category === 'linguist'){
+    if (testQuestions[currentQuestion].category === 'linguist') {
       linguistCount++;
-    }else if(testQuestions[currentQuestion].category === 'logic'){
+    } else if (testQuestions[currentQuestion].category === 'logic') {
       logicCount++;
-    }else if(testQuestions[currentQuestion].category === 'musical'){
+    } else if (testQuestions[currentQuestion].category === 'musical') {
       musicalCount++;
-    }else if(testQuestions[currentQuestion].category === 'bodily'){
+    } else if (testQuestions[currentQuestion].category === 'bodily') {
       bodilyCount++;
-    }else if(testQuestions[currentQuestion].category === 'spatial'){
+    } else if (testQuestions[currentQuestion].category === 'spatial') {
       spatialCount++;
-    }else if(testQuestions[currentQuestion].category === 'inter'){
+    } else if (testQuestions[currentQuestion].category === 'inter') {
       interCount++;
-    }else{
+    } else {
       intraCount++;
     }
 
@@ -226,14 +226,14 @@ function handleTrue(event) {
 function handleFalse(event) {
   console.log(event.target);
 
-  if (currentQuestion<testQuestions.length-1){
+  if (currentQuestion < testQuestions.length - 1) {
 
     currentQuestion++;
     showQuestion();
     showTitle();
     // showAudio();
     showAnswers()
-  }else{
+  } else {
     showMeResults();
   };
 }
@@ -245,7 +245,7 @@ function handleFalse(event) {
 // event handler will add to general counter and intelligence specific counters as well as prompting next question
 
 function showMeResults() {
-// create and render chart data
+  // create and render chart data
   iqArray.push(parseInt(linguistCount));
   iqArray.push(parseInt(logicCount));
   iqArray.push(parseInt(musicalCount));
@@ -266,16 +266,16 @@ function showMeResults() {
 
   // create a fucntion to locate strongest type by string
   var largest = 0;
-for (var i=0; i<=largest;i++){
-    if (iqArray[i]>largest) {
-        var largest=iqArray[i];
-        var label = labels[i];
+  for (var i = 0; i <= largest; i++) {
+    if (iqArray[i] > largest) {
+      var largest = iqArray[i];
+      var label = labels[i];
     }
-}
+  }
 
 
-console.log(largest);
-console.log('label is ', label);
+  console.log(largest);
+  console.log('label is ', label);
 
   // Assign content as empty string so we can dynamically create
   intelReport.innerHTML = '';
@@ -301,7 +301,7 @@ var data = {
       backgroundColor: [
         'rgba(204, 68, 75, 0.60)',
         'rgba(255, 111, 188, 0.60)',
-        'rgba(133, 253, 255, 0.60)',
+        'rgba(47, 183, 214, 0.6)',
         'rgba(112, 255, 200, 0.60)',
         'rgba(89, 99, 232, 0.60)',
         'rgba(224, 255, 98, 0.60)',
@@ -334,8 +334,10 @@ function createChart() {
 
 function showMeaning() {
   // generate discription after chart
-  var h2 = document.getElementById('h2').textContent = 'What This Means...';
-  var p = document.getElementById('p').textContent = 'This is an informal survey of multiple intelligences. Since it is not standardized your scores are only in comparison to yourself. It is interpreted by looking at relative highs and lows rather then exact numbers. Everyone is a different balance of these strengths and weakness.';
+  var h2 = document.getElementById('h2');
+  h2.textContent = 'What This Means...';
+  var p = document.getElementById('p');
+  p.textContent = 'This is an informal survey of multiple intelligences. Since it is not standardized your scores are only in comparison to yourself. It is interpreted by looking at relative highs and lows rather then exact numbers. Everyone is a different balance of these strengths and weakness.';
   var element = document.createElement('button');
   element.appendChild(document.createTextNode('See IQ description Types Here'));
   var page = document.getElementById('btn');
