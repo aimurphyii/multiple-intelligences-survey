@@ -1,6 +1,7 @@
 body{
   font-family: 'Josefin Sans', sans-serif;
-  font-size: 16px;
+  font-size: 20px;
+  line-height: 1.5em;
   background-color: #E8F6F7;
   color: #697E7F;
 }
@@ -33,10 +34,10 @@ a:hover{
   color: #D3FEFF;
   background: #437D7F;
   line-height: 80px;
-  padding-top:35px;
-  padding-bottom:35px;
-  padding-left:20px;
-  padding-right:20px;
+  padding-top: 33px;
+  padding-bottom: 33px;
+  padding-left: 20px;
+  padding-right: 20px;
 }
 /* nav li:hover{
 
@@ -63,22 +64,26 @@ h2{
   line-height: 30px;
 }
 
-
 /* test */
 #question{
-  margin-bottom: 5px;
+  margin: 5px auto;
   width: 960px;
   height:300px;
   text-align: center;
   vertical-align: middle;
   line-height: 300px;
-  font-size: large;
+  /* font-size: large; */
   color:#fff;
-  background-color: #697E7F
+  background-color :rgba(89, 99, 232, 0.795);
 }
 .testanswer li{
   float: left;
   margin-bottom: 20px;
+}
+
+#surveybottom{
+  margin: auto;
+  width: 960px;
 }
 
 #true{
@@ -86,7 +91,7 @@ h2{
   height:300px;
   vertical-align: middle;
   line-height: 300px;
-  background-color: #437D7F;
+  background-color: rgb(105, 126, 127, 0.795);
   color: #fff;
   text-align: center;
   font-size: 100px;
@@ -101,7 +106,7 @@ h2{
   height:300px;
   vertical-align: middle;
   line-height: 300px;
-  background-color: #437D7F;
+  background-color: rgba(105, 126, 127, 0.795);
   color: #fff;
   text-align: center;
   font-size: 100px;
@@ -114,7 +119,7 @@ h2{
 form{
   text-align: center;
   max-width: 275px;
-  border: 5px solid #697E7F;
+  border: 5px solid rgb(105, 126, 127);
   padding:10px;
   margin: 20px auto;
 }
@@ -158,7 +163,20 @@ form button:hover {
 }
 .right{
   float: right;
+  margin-right: 200px;
 }
+
+.goal{
+  max-width: 500px;
+  float: left;
+}
+
+.history{
+  margin-top: 20px;
+  max-width: 500px;
+  float: left;
+}
+
 button {
   font-size: 14px;
   font-family: 'Josefin Sans', sans-serif;
@@ -202,9 +220,8 @@ button:hover {
   float:right;
   margin-left: 10px;
   border-radius: 10%;
-  object-fit: contain;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
 }
 
 #linguist h3{
@@ -241,7 +258,7 @@ button:hover {
 }
 
 #inter h3{
-  color:#E8A959;
+  color:#e8a959;
   background-color: rgba(232, 170, 89, 0.25);
 }
 
@@ -260,11 +277,6 @@ button:hover {
   padding-left: 15px;
 }
 
-.bios img{
-  float:right;
-  margin-left: 10px;
-  border-radius: 10%;
-}
 
 #about-head {
   text-shadow: 1px 1px 1px #888;
@@ -275,6 +287,9 @@ button:hover {
   padding-left: 15px;
 }
 
-.bios{
-  margin: 0 auto;
+
+.bios img{
+  float: left;
+  margin-right: 10px;
+  border-radius: 10%;
 }
