@@ -44,7 +44,7 @@ var intraCount = 0;
 // }
 
 //These will feed our chart
-var  myPieChart;
+var myPieChart;
 var chartDrawn = false;
 var iqArray = [];
 var labels = [
@@ -210,7 +210,7 @@ function handleTrue(event) {
 
     //  clear for next round
 
-  currentQuestion++;
+    currentQuestion++;
 
     showQuestion();
     showTitle();
@@ -236,7 +236,7 @@ function handleFalse(event) {
   }else{
     showMeResults();
   };
-  }
+}
 
 // console.log(musical);
 
@@ -268,12 +268,13 @@ function showMeResults() {
   // Assign content as empty string so we can dynamically create
   intelReport.innerHTML = '';
   var headline = document.createElement('h2');
-  headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: [intelligence here]`
+  headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: [intelligence here]`;
   // Attach it, or it won't show up:
   intelReport.appendChild(headline);
-  
+
   // and display the pie chart
   createChart();
+  showMeaning();
 }
 
 // now we are going to build out the data object for our chart
@@ -286,13 +287,13 @@ var data = {
       data: iqArray,
       // used corresponding colors from css
       backgroundColor: [
-        'rgba(204, 68, 75, 0.25)',
-        'rgba(255, 111, 188, 0.25)',
-        'rgba(133, 253, 255, 0.25)',
-        'rgba(112, 255, 200, 0.25)',
-        'rgba(89, 99, 232, 0.25)',
-        'rgba(224, 255, 98, 0.25)',
-        'rgba(232, 170, 89, 0.25)',
+        'rgba(204, 68, 75, 0.60)',
+        'rgba(255, 111, 188, 0.60)',
+        'rgba(133, 253, 255, 0.60)',
+        'rgba(112, 255, 200, 0.60)',
+        'rgba(89, 99, 232, 0.60)',
+        'rgba(224, 255, 98, 0.60)',
+        'rgba(232, 170, 89, 0.60)',
       ],
     }
   ]
@@ -301,16 +302,30 @@ var data = {
 // make a chart
 function createChart() {
   // this is the line that is giving grief
-  
+
   var ctx = document.getElementById('myChart').getContext('2d');
+  ctx.canvas.width = 200;
+  ctx.canvas.height = 75;
+
+
 
   // this is where the chart is actually built, the data traces back to our data object above
 
   myPieChart = new Chart(ctx, {
-    type: 'pie',
+    type: 'doughnut',
     data: data,
     // options: options
   });
   // change the boolean for our chart
   chartDrawn = true;
+}
+
+function showMeaning() {
+  // generate discription after chart
+  var h2 = document.getElementById('h2').textContent = 'What This Means...';
+  var p = document.getElementById('p').textContent = 'This is an informal survey of multiple intelligences. Since it is not standardized your scores are only in comparison to yourself. It is interpreted by looking at relative highs and lows rather then exact numbers. Everyone is a different balance of these strengths and weakness.';
+  var element = document.createElement('button');
+  element.appendChild(document.createTextNode('See IQ description Types Here'));
+  var page = document.getElementById('btn');
+  page.appendChild(element);
 }
