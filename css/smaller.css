@@ -7,7 +7,7 @@ body{
 }
 
 /* header nav styles */
-header, section{
+header, section {
   width: 80%;
   margin: 20px auto;
   height: 40px;
@@ -33,7 +33,7 @@ p{
 nav{
   background: #437D7F;
   width:80%;
-  margin: 50px auto;
+  margin: 80px auto;
 }
 
 nav li{
@@ -75,7 +75,7 @@ nav a:hover{
 
 .rightsmaller{
   float: right;
-  margin-top: 20px;
+  margin-top: 32px;
   max-width: 40%;
   text-align: justify;
 }
@@ -106,7 +106,14 @@ nav a:hover{
   margin-top:-50px;
 } */
 
+.body li a{
+  color: #437D7F;
+  text-decoration: none;
+}
 
+.body li a:hover{
+  text-decoration: underline;
+}
 /* test */
 #question{
   margin: 5px auto;
@@ -294,17 +301,17 @@ button:hover {
   background-color: rgba(112, 255, 200, 0.25);
 }
 
-#spatial h3{
+#brandyn h3, #spatial h3{
   color:#5963E8;
   background-color: rgba(89, 99, 232, 0.25);
 }
 
-#intra h3{
+#adrienne h3, #intra h3{
   color:#FCE958;
   background-color: rgba(224, 255, 98, 0.4);
 }
 
-#inter h3{
+#haley h3, #inter h3{
   color:#e8a959;
   background-color: rgba(232, 170, 89, 0.25);
 }
@@ -328,8 +335,26 @@ button:hover {
   max-width: 180px;
 }
 
-.music {
+.musicly {
   color: #2FB7D6;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.interly{
+  color:#e8a959;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.intraly{
+  color:#FCE958;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.spatially{
+  color:#5963E8;
   text-shadow: 1px 1px 2px #888;
   text-transform: uppercase;
 }
