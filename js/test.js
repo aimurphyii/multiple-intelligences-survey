@@ -86,7 +86,7 @@ new IqType('I like to work with calculators and computers.', 'logic', '7', 'audi
 new IqType('I pick up new dance steps fast.', 'bodily', '8', 'audio/q8.mp3');
 new IqType('It is easy for me to say what I think in an argument or debate.', 'linguist', '9', 'audio/q9.mp3');
 new IqType('I enjoy a good lecture, speech, or sermon.', 'linguist', '10', 'audio/q10.mp3');
-new IqType('I always know north from south no matter where I am.', 'spatial', '11', 'audio/q11.mp3');
+new IqType('I always know North from South no matter where I am.', 'spatial', '11', 'audio/q11.mp3');
 new IqType('I like to gather together groups of people for parties of special events.', 'inter', '12', 'audio/q12.mp3');
 new IqType('Life seems empty without music.', 'musical', '13', 'audio/q13.mp3');
 new IqType('I always understand the drawings that come with new gadgets or appliances.', 'spatial', '14', 'audio/q14.mp3');
