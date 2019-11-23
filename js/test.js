@@ -3,51 +3,51 @@
 // create a form that asks for name, DOB, and date, as well as a button that submits the form and starts the test.
 // grab from DOM via event handler, and store the newly input information
 
-var testanswer = document.getElementById('testanswer');
-var userForm = document.getElementById('userform');
-var surveytop = document.getElementById('surveytop');
-var surveymid = document.getElementById('surveymid');
-var surveybottom = document.getElementById('surveybottom');
+let testanswer = document.getElementById('testanswer');
+let userForm = document.getElementById('userform');
+let surveytop = document.getElementById('surveytop');
+let surveymid = document.getElementById('surveymid');
+let surveybottom = document.getElementById('surveybottom');
 
-var answerTrue = document.createElement('li');
-var answerFalse = document.createElement('li');
+let answerTrue = document.createElement('li');
+let answerFalse = document.createElement('li');
 
-var qtitle = document.getElementById('qtitle');
-var qaudio = document.getElementById('qaudio');
-var question = document.createElement('p');
+let qtitle = document.getElementById('qtitle');
+let qaudio = document.getElementById('qaudio');
+let question = document.createElement('p');
 // get the results section from DOM
-var intelReport = document.getElementById('results');
+let intelReport = document.getElementById('results');
 
 // how we will create the user object
-var UserInfo = function (name, birthdate, testdate) {
+let UserInfo = function (name, birthdate, testdate) {
   this.name = name;
   this.birthdate = birthdate;
   this.testdate = testdate;
 };
 
 // this is where we access our user info
-var savedUser = [];
+let savedUser = [];
 
 
 // this guides our script to populate and refer to our questions, it also keeps a running count of where we are in the survey
-var currentQuestion = 0;
+let currentQuestion = 0;
 
 // make arrays for each intelligence to count up number of trues. trues will be pushed up from each question object on click
-// var types={
-var linguistCount = 0;
-var logicCount = 0;
-var musicalCount = 0;
-var bodilyCount = 0;
-var spatialCount = 0;
-var interCount = 0;
-var intraCount = 0;
+// let types={
+let linguistCount = 0;
+let logicCount = 0;
+let musicalCount = 0;
+let bodilyCount = 0;
+let spatialCount = 0;
+let interCount = 0;
+let intraCount = 0;
 // }
 
 //These will feed our chart
-var myPieChart;
-var chartDrawn = false;
-var iqArray = [];
-var labels = [
+let myPieChart;
+let chartDrawn = false;
+let iqArray = [];
+let labels = [
   'Linguistic',
   'Logical-Mathematical',
   'Musical',
@@ -58,16 +58,16 @@ var labels = [
 ];
 
 // this array stores all of our question objects
-var testQuestions = [];
+let testQuestions = [];
 
 // For each question:
 // create constructor function to construct test question objects with properties of:
 // question value (wording of q)
 // quetion number (ordered questions, no random)
 // category of intelligence (this will add to intel array count)
-// to track overal count, creat baseline var counter = 0
+// to track overal count, creat baseline let counter = 0
 
-var IqType = function (qvalue, category, index, filepath) {
+let IqType = function (qvalue, category, index, filepath) {
   this.qvalue = qvalue;
   this.category = category;
   this.index = index;
@@ -121,17 +121,17 @@ console.log(testQuestions[1].index);
 function handleUserInfo(event) {
   event.preventDefault();
 
-  var userName = event.target.name.value;
-  var birthDate = event.target.birthdate.value;
-  var testDate = event.target.date.value;
+  let userName = event.target.name.value;
+  let birthDate = event.target.birthdate.value;
+  let testDate = event.target.date.value;
 
-  var newUser = new UserInfo(userName, birthDate, testDate);
+  let newUser = new UserInfo(userName, birthDate, testDate);
   savedUser.push(newUser);
 
   // we need to figure out how to log dates in and in what format
 
   // this will tuck away our form once submitted
-  var input = document.getElementById('input');
+  let input = document.getElementById('input');
   input.parentElement.removeChild(input);
   showQuestion();
   showTitle();
@@ -265,11 +265,11 @@ function showMeResults() {
   surveybottom.parentElement.removeChild(surveybottom);
 
   // create a fucntion to locate strongest type by string
-  var largest = 0;
-  for (var i = 0; i <= largest; i++) {
+  let largest = 0;
+  for (let i = 0; i <= largest; i++) {
     if (iqArray[i] > largest) {
-      var largest = iqArray[i];
-      var label = labels[i];
+      let largest = iqArray[i];
+      let label = labels[i];
     }
   }
 
@@ -279,7 +279,7 @@ function showMeResults() {
 
   // Assign content as empty string so we can dynamically create
   intelReport.innerHTML = '';
-  var headline = document.createElement('h2');
+  let headline = document.createElement('h2');
   headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: ${label}!`;
   // Attach it, or it won't show up:
   intelReport.appendChild(headline);
@@ -290,7 +290,7 @@ function showMeResults() {
 }
 
 // now we are going to build out the data object for our chart
-var data = {
+let data = {
   // created an array with strings for naming puroses
   labels: labels,
   datasets: [
@@ -315,7 +315,7 @@ var data = {
 function createChart() {
   // this is the line that is giving grief
 
-  var ctx = document.getElementById('myChart').getContext('2d');
+  let ctx = document.getElementById('myChart').getContext('2d');
   ctx.canvas.width = 200;
   ctx.canvas.height = 75;
 
@@ -334,12 +334,12 @@ function createChart() {
 
 function showMeaning() {
   // generate discription after chart
-  var h2 = document.getElementById('h2');
+  let h2 = document.getElementById('h2');
   h2.textContent = 'What This Means...';
-  var p = document.getElementById('p');
+  let p = document.getElementById('p');
   p.textContent = 'This is an informal survey of multiple intelligences. Since it is not standardized your scores are only in comparison to yourself. It is interpreted by looking at relative highs and lows rather then exact numbers. Everyone is a different balance of these strengths and weakness.';
-  var element = document.createElement('button');
+  let element = document.createElement('button');
   element.appendChild(document.createTextNode('See IQ description Types Here'));
-  var page = document.getElementById('btn');
+  let page = document.getElementById('btn');
   page.appendChild(element);
 }
