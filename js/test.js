@@ -180,7 +180,7 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (currentQuestion < testQuestions.length) {
+  if (currentQuestion < testQuestions.length - 1) {
     console.log('test q current q is at', testQuestions[currentQuestion].category);
     console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist') {
@@ -264,15 +264,6 @@ function showMeResults() {
   surveymid.parentElement.removeChild(surveymid);
   surveybottom.parentElement.removeChild(surveybottom);
 
-  // create a function to locate strongest type by string
-  // let largest = 0;
-  // for (let i = 0; i <= largest; i++) {
-  //   if (iqArray[i] > largest) {
-  //     let largest = iqArray[i];
-  //     let label = labels[i];
-  //   }
-  // }
-
   let label = findHighest(iqArray);
 
   console.log('label is ', label);
@@ -289,15 +280,7 @@ function showMeResults() {
   showMeaning();
 }
 
-  // create a function to locate strongest type by string
-
-  // let largest = 0;
-  // for (let i = 0; i <= largest; i++) {
-  //   if (iqArray[i] > largest) {
-  //     let largest = iqArray[i];
-  //     let label = labels[i];
-  //   }
-  // }
+// create a function to locate strongest type by string
 
 function findHighest(arr) {
   let countArray = arr.map(obj => obj.count);
@@ -313,7 +296,7 @@ let data = {
   datasets: [
     {
       // using repurpsed array to render type counts for chart data
-      data: iqArray,
+      data: iqArray.map(obj => obj.count),
       // used corresponding colors from css
       backgroundColor: [
         'rgba(204, 68, 75, 0.60)',
