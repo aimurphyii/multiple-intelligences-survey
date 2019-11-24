@@ -63,7 +63,7 @@ let testQuestions = [];
 // For each question:
 // create constructor function to construct test question objects with properties of:
 // question value (wording of q)
-// quetion number (ordered questions, no random)
+// question number (ordered questions, no random)
 // category of intelligence (this will add to intel array count)
 // to track overal count, creat baseline let counter = 0
 
@@ -264,15 +264,16 @@ function showMeResults() {
   surveymid.parentElement.removeChild(surveymid);
   surveybottom.parentElement.removeChild(surveybottom);
 
-  // create a fucntion to locate strongest type by string
-  let largest = 0;
-  for (let i = 0; i <= largest; i++) {
-    if (iqArray[i] > largest) {
-      let largest = iqArray[i];
-      let label = labels[i];
-    }
-  }
+  // create a function to locate strongest type by string
+  // let largest = 0;
+  // for (let i = 0; i <= largest; i++) {
+  //   if (iqArray[i] > largest) {
+  //     let largest = iqArray[i];
+  //     let label = labels[i];
+  //   }
+  // }
 
+  findHighest();
 
   console.log(largest);
   console.log('label is ', label);
@@ -288,6 +289,21 @@ function showMeResults() {
   createChart();
   showMeaning();
 }
+
+  // create a function to locate strongest type by string
+
+  // let largest = 0;
+  // for (let i = 0; i <= largest; i++) {
+  //   if (iqArray[i] > largest) {
+  //     let largest = iqArray[i];
+  //     let label = labels[i];
+  //   }
+  // }
+
+function findHighest(iqArray) {
+  let largest = Math.max(...iqArray);
+  iqArray.filter()
+};
 
 // now we are going to build out the data object for our chart
 let data = {
