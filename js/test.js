@@ -48,11 +48,11 @@ let myPieChart;
 let chartDrawn = false;
 let iqArray = [];
 let labels = [
-  'Linguistic',
+  'Verbal-Linguistic',
   'Logical-Mathematical',
   'Musical',
   'Bodily-Kinesthetic',
-  'Spatial',
+  'Visual-Spatial',
   'Interpersonal',
   'Intrapersonal',
 ];
@@ -246,13 +246,13 @@ function handleFalse(event) {
 
 function showMeResults() {
   // create and render chart data
-  iqArray.push(parseInt(linguistCount));
-  iqArray.push(parseInt(logicCount));
-  iqArray.push(parseInt(musicalCount));
-  iqArray.push(parseInt(bodilyCount));
-  iqArray.push(parseInt(spatialCount));
-  iqArray.push(parseInt(interCount));
-  iqArray.push(parseInt(intraCount));
+  iqArray.push({category: 'Verbal-Linguistic Intelligence', count: linguistCount});
+  iqArray.push({category: 'Logical-Mathematical Intelligence', count: logicCount});
+  iqArray.push({category: 'Musical Intelligence', count: musicalCount});
+  iqArray.push({category: 'Bodily-Kinesthetic Intelligence', count: bodilyCount});
+  iqArray.push({category: 'Visual-Spatial Intelligence', count: spatialCount});
+  iqArray.push({category: 'Interpersonal Intelligence', count: interCount});
+  iqArray.push({category: 'Intrapersonal Intelligence', count: intraCount});
   console.log('iqarray is currently, ', iqArray);
 
   // Bring to a close by turning off the event handler
@@ -273,9 +273,8 @@ function showMeResults() {
   //   }
   // }
 
-  findHighest();
+  let label = findHighest(iqArray);
 
-  console.log(largest);
   console.log('label is ', label);
 
   // Assign content as empty string so we can dynamically create
@@ -300,9 +299,11 @@ function showMeResults() {
   //   }
   // }
 
-function findHighest(iqArray) {
-  let largest = Math.max(...iqArray);
-  iqArray.filter()
+function findHighest(arr) {
+  let countArray = arr.map(obj => obj.count);
+  let largest = Math.max(...countArray);
+  let bestList = iqArray.filter(obj => obj.count === largest); 
+  return bestList.map(obj => obj.category).join(', ');
 };
 
 // now we are going to build out the data object for our chart
