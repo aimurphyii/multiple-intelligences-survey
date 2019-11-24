@@ -113,9 +113,9 @@ new IqType('I am sensitive to the moods of others.', 'inter', '34', 'audio/q34.m
 new IqType('I have a good sense of what others think of me.', 'inter', '35', 'audio/q35.mp3');
 
 
-console.log('questions ', testQuestions);
-console.log(testQuestions[0].qvalue);
-console.log(testQuestions[1].index);
+// console.log('questions ', testQuestions);
+// console.log(testQuestions[0].qvalue);
+// console.log(testQuestions[1].index);
 
 // this function handles input into our form
 function handleUserInfo(event) {
@@ -181,8 +181,6 @@ answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
   if (currentQuestion < testQuestions.length - 1) {
-    console.log('test q current q is at', testQuestions[currentQuestion].category);
-    console.log(testQuestions[currentQuestion].qvalue);
     if (testQuestions[currentQuestion].category === 'linguist') {
       linguistCount++;
     } else if (testQuestions[currentQuestion].category === 'logic') {
@@ -198,15 +196,6 @@ function handleTrue(event) {
     } else {
       intraCount++;
     }
-
-    console.log('music is ', musicalCount);
-    console.log('linguist is ', linguistCount);
-    console.log('spatial is ', spatialCount);
-    console.log('intra is ', intraCount);
-    console.log('inter is ', interCount);
-    console.log('bodily is ', bodilyCount);
-    console.log('logic is ', logicCount);
-    console.log(event.target);
 
     //  clear for next round
 
@@ -289,37 +278,38 @@ function findHighest(arr) {
   return bestList.map(obj => obj.category).join(', ');
 };
 
-// now we are going to build out the data object for our chart
-let data = {
-  // created an array with strings for naming puroses
-  labels: labels,
-  datasets: [
-    {
-      // using repurpsed array to render type counts for chart data
-      data: iqArray.map(obj => obj.count),
-      // used corresponding colors from css
-      backgroundColor: [
-        'rgba(204, 68, 75, 0.60)',
-        'rgba(255, 111, 188, 0.60)',
-        'rgba(47, 183, 214, 0.6)',
-        'rgba(112, 255, 200, 0.60)',
-        'rgba(89, 99, 232, 0.60)',
-        'rgba(224, 255, 98, 0.60)',
-        'rgba(232, 170, 89, 0.60)',
-      ],
-    }
-  ]
-};
+
 
 // make a chart
 function createChart() {
+
+  // now we are going to build out the data object for our chart
+  let data = {
+    // created an array with strings for naming puroses
+    labels: labels,
+    datasets: [
+      {
+        // using repurpsed array to render type counts for chart data
+        data: iqArray.map(obj => obj.count),
+        // used corresponding colors from css
+        backgroundColor: [
+          'rgba(204, 68, 75, 0.60)',
+          'rgba(255, 111, 188, 0.60)',
+          'rgba(47, 183, 214, 0.6)',
+          'rgba(112, 255, 200, 0.60)',
+          'rgba(89, 99, 232, 0.60)',
+          'rgba(224, 255, 98, 0.60)',
+          'rgba(232, 170, 89, 0.60)',
+        ],
+      }
+    ]
+  };
+
   // this is the line that is giving grief
 
   let ctx = document.getElementById('myChart').getContext('2d');
   ctx.canvas.width = 200;
   ctx.canvas.height = 75;
-
-
 
   // this is where the chart is actually built, the data traces back to our data object above
 
