@@ -180,27 +180,26 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (currentQuestion < testQuestions.length - 1) {
-    if (testQuestions[currentQuestion].category === 'linguist') {
-      linguistCount++;
-    } else if (testQuestions[currentQuestion].category === 'logic') {
-      logicCount++;
-    } else if (testQuestions[currentQuestion].category === 'musical') {
-      musicalCount++;
-    } else if (testQuestions[currentQuestion].category === 'bodily') {
-      bodilyCount++;
-    } else if (testQuestions[currentQuestion].category === 'spatial') {
-      spatialCount++;
-    } else if (testQuestions[currentQuestion].category === 'inter') {
-      interCount++;
-    } else {
-      intraCount++;
-    }
+  console.log(event.target.id);
+  if (testQuestions[currentQuestion].category === 'linguist') {
+    linguistCount++;
+  } else if (testQuestions[currentQuestion].category === 'logic') {
+    logicCount++;
+  } else if (testQuestions[currentQuestion].category === 'musical') {
+    musicalCount++;
+  } else if (testQuestions[currentQuestion].category === 'bodily') {
+    bodilyCount++;
+  } else if (testQuestions[currentQuestion].category === 'spatial') {
+    spatialCount++;
+  } else if (testQuestions[currentQuestion].category === 'inter') {
+    interCount++;
+  } else {
+    intraCount++;
+  }
 
-    //  clear for next round
+  currentQuestion++;
 
-    currentQuestion++;
-
+  if (currentQuestion < testQuestions.length) {
     showQuestion();
     showTitle();
     // showAudio();
@@ -213,18 +212,19 @@ function handleTrue(event) {
 
 // handles false answers by moving to next question and counting up or rendering results
 function handleFalse(event) {
-  console.log(event.target);
+  console.log(event.target.id);
 
-  if (currentQuestion < testQuestions.length - 1) {
+  currentQuestion++;
 
-    currentQuestion++;
+  if (currentQuestion < testQuestions.length) {
     showQuestion();
     showTitle();
     // showAudio();
-    showAnswers()
+    showAnswers();
   } else {
+    console.log('DONE');
     showMeResults();
-  };
+  }
 }
 
 // console.log(musical);
@@ -282,7 +282,7 @@ function findHighest(arr) {
 
 // make a chart
 function createChart() {
-
+console.log(iqArray);
   // now we are going to build out the data object for our chart
   let data = {
     // created an array with strings for naming puroses
