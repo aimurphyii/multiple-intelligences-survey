@@ -48,11 +48,11 @@ let myPieChart;
 let chartDrawn = false;
 let iqArray = [];
 let labels = [
-  'Linguistic',
+  'Verbal-Linguistic',
   'Logical-Mathematical',
   'Musical',
   'Bodily-Kinesthetic',
-  'Spatial',
+  'Visual-Spatial',
   'Interpersonal',
   'Intrapersonal',
 ];
@@ -63,7 +63,7 @@ let testQuestions = [];
 // For each question:
 // create constructor function to construct test question objects with properties of:
 // question value (wording of q)
-// quetion number (ordered questions, no random)
+// question number (ordered questions, no random)
 // category of intelligence (this will add to intel array count)
 // to track overal count, creat baseline let counter = 0
 
@@ -113,9 +113,9 @@ new IqType('I am sensitive to the moods of others.', 'inter', '34', 'audio/q34.m
 new IqType('I have a good sense of what others think of me.', 'inter', '35', 'audio/q35.mp3');
 
 
-console.log('questions ', testQuestions);
-console.log(testQuestions[0].qvalue);
-console.log(testQuestions[1].index);
+// console.log('questions ', testQuestions);
+// console.log(testQuestions[0].qvalue);
+// console.log(testQuestions[1].index);
 
 // this function handles input into our form
 function handleUserInfo(event) {
@@ -180,9 +180,7 @@ answerTrue.addEventListener('click', handleTrue);
 answerFalse.addEventListener('click', handleFalse);
 
 function handleTrue(event) {
-  if (currentQuestion < testQuestions.length) {
-    console.log('test q current q is at', testQuestions[currentQuestion].category);
-    console.log(testQuestions[currentQuestion].qvalue);
+  if (currentQuestion < testQuestions.length - 1) {
     if (testQuestions[currentQuestion].category === 'linguist') {
       linguistCount++;
     } else if (testQuestions[currentQuestion].category === 'logic') {
@@ -198,15 +196,6 @@ function handleTrue(event) {
     } else {
       intraCount++;
     }
-
-    console.log('music is ', musicalCount);
-    console.log('linguist is ', linguistCount);
-    console.log('spatial is ', spatialCount);
-    console.log('intra is ', intraCount);
-    console.log('inter is ', interCount);
-    console.log('bodily is ', bodilyCount);
-    console.log('logic is ', logicCount);
-    console.log(event.target);
 
     //  clear for next round
 
@@ -246,13 +235,13 @@ function handleFalse(event) {
 
 function showMeResults() {
   // create and render chart data
-  iqArray.push(parseInt(linguistCount));
-  iqArray.push(parseInt(logicCount));
-  iqArray.push(parseInt(musicalCount));
-  iqArray.push(parseInt(bodilyCount));
-  iqArray.push(parseInt(spatialCount));
-  iqArray.push(parseInt(interCount));
-  iqArray.push(parseInt(intraCount));
+  iqArray.push({category: 'Verbal-Linguistic Intelligence', count: linguistCount});
+  iqArray.push({category: 'Logical-Mathematical Intelligence', count: logicCount});
+  iqArray.push({category: 'Musical Intelligence', count: musicalCount});
+  iqArray.push({category: 'Bodily-Kinesthetic Intelligence', count: bodilyCount});
+  iqArray.push({category: 'Visual-Spatial Intelligence', count: spatialCount});
+  iqArray.push({category: 'Interpersonal Intelligence', count: interCount});
+  iqArray.push({category: 'Intrapersonal Intelligence', count: intraCount});
   console.log('iqarray is currently, ', iqArray);
 
   // Bring to a close by turning off the event handler
@@ -264,17 +253,8 @@ function showMeResults() {
   surveymid.parentElement.removeChild(surveymid);
   surveybottom.parentElement.removeChild(surveybottom);
 
-  // create a fucntion to locate strongest type by string
-  let largest = 0;
-  for (let i = 0; i <= largest; i++) {
-    if (iqArray[i] > largest) {
-      let largest = iqArray[i];
-      let label = labels[i];
-    }
-  }
+  let label = findHighest(iqArray);
 
-
-  console.log(largest);
   console.log('label is ', label);
 
   // Assign content as empty string so we can dynamically create
@@ -289,37 +269,47 @@ function showMeResults() {
   showMeaning();
 }
 
-// now we are going to build out the data object for our chart
-let data = {
-  // created an array with strings for naming puroses
-  labels: labels,
-  datasets: [
-    {
-      // using repurpsed array to render type counts for chart data
-      data: iqArray,
-      // used corresponding colors from css
-      backgroundColor: [
-        'rgba(204, 68, 75, 0.60)',
-        'rgba(255, 111, 188, 0.60)',
-        'rgba(47, 183, 214, 0.6)',
-        'rgba(112, 255, 200, 0.60)',
-        'rgba(89, 99, 232, 0.60)',
-        'rgba(224, 255, 98, 0.60)',
-        'rgba(232, 170, 89, 0.60)',
-      ],
-    }
-  ]
+// create a function to locate strongest type by string
+
+function findHighest(arr) {
+  let countArray = arr.map(obj => obj.count);
+  let largest = Math.max(...countArray);
+  let bestList = iqArray.filter(obj => obj.count === largest); 
+  return bestList.map(obj => obj.category).join(', ');
 };
+
+
 
 // make a chart
 function createChart() {
+
+  // now we are going to build out the data object for our chart
+  let data = {
+    // created an array with strings for naming puroses
+    labels: labels,
+    datasets: [
+      {
+        // using repurpsed array to render type counts for chart data
+        data: iqArray.map(obj => obj.count),
+        // used corresponding colors from css
+        backgroundColor: [
+          'rgba(204, 68, 75, 0.60)',
+          'rgba(255, 111, 188, 0.60)',
+          'rgba(47, 183, 214, 0.6)',
+          'rgba(112, 255, 200, 0.60)',
+          'rgba(89, 99, 232, 0.60)',
+          'rgba(224, 255, 98, 0.60)',
+          'rgba(232, 170, 89, 0.60)',
+        ],
+      }
+    ]
+  };
+
   // this is the line that is giving grief
 
   let ctx = document.getElementById('myChart').getContext('2d');
   ctx.canvas.width = 200;
   ctx.canvas.height = 75;
-
-
 
   // this is where the chart is actually built, the data traces back to our data object above
 
