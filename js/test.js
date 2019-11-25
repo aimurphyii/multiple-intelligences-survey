@@ -227,21 +227,19 @@ function handleFalse(event) {
   }
 }
 
-// console.log(musical);
-
 // Have progress bar across top. (maybe stretch goal)
 
 // event handler will add to general counter and intelligence specific counters as well as prompting next question
 
 function showMeResults() {
   // create and render chart data
-  iqArray.push({category: 'Verbal-Linguistic Intelligence', count: linguistCount});
-  iqArray.push({category: 'Logical-Mathematical Intelligence', count: logicCount});
-  iqArray.push({category: 'Musical Intelligence', count: musicalCount});
-  iqArray.push({category: 'Bodily-Kinesthetic Intelligence', count: bodilyCount});
-  iqArray.push({category: 'Visual-Spatial Intelligence', count: spatialCount});
-  iqArray.push({category: 'Interpersonal Intelligence', count: interCount});
-  iqArray.push({category: 'Intrapersonal Intelligence', count: intraCount});
+  iqArray.push({category: 'Verbal-Linguistic', count: linguistCount});
+  iqArray.push({category: 'Logical-Mathematical', count: logicCount});
+  iqArray.push({category: 'Musical', count: musicalCount});
+  iqArray.push({category: 'Bodily-Kinesthetic', count: bodilyCount});
+  iqArray.push({category: 'Visual-Spatial', count: spatialCount});
+  iqArray.push({category: 'Interpersonal', count: interCount});
+  iqArray.push({category: 'Intrapersonal', count: intraCount});
   console.log('iqarray is currently, ', iqArray);
 
   // Bring to a close by turning off the event handler
@@ -255,18 +253,20 @@ function showMeResults() {
 
   let label = findHighest(iqArray);
 
-  console.log('label is ', label);
-
   // Assign content as empty string so we can dynamically create
-  intelReport.innerHTML = '';
-  let headline = document.createElement('h2');
-  headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: ${label}!`;
+
+
   // Attach it, or it won't show up:
-  intelReport.appendChild(headline);
+
 
   // and display the pie chart
-  createChart();
-  showMeaning();
+  if(label) {
+    declareStrengths(label);
+    createChart();
+    showMeaning();
+  } else {
+    manageZeros();
+  }
 }
 
 // create a function to locate strongest type by string
@@ -274,11 +274,24 @@ function showMeResults() {
 function findHighest(arr) {
   let countArray = arr.map(obj => obj.count);
   let largest = Math.max(...countArray);
+  if(largest === 0) {
+    return false;
+  }
   let bestList = iqArray.filter(obj => obj.count === largest); 
   return bestList.map(obj => obj.category).join(', ');
 };
 
+function declareStrengths(label) {
+  intelReport.innerHTML = '';
+  let headline = document.createElement('h2');
+  headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: ${label} Intelligence!`;
+  intelReport.appendChild(headline);
+}
 
+function manageZeros() {
+  let h2zero = document.getElementById('h2zero');
+  h2zero.textContent = 'Please retake, all scores zero. You are capable of more than you think!';
+};
 
 // make a chart
 function createChart() {
