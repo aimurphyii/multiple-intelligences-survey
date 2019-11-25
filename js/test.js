@@ -253,12 +253,6 @@ function showMeResults() {
 
   let label = findHighest(iqArray);
 
-  // Assign content as empty string so we can dynamically create
-
-
-  // Attach it, or it won't show up:
-
-
   // and display the pie chart
   if(label) {
     declareStrengths(label);
@@ -275,22 +269,25 @@ function findHighest(arr) {
   let countArray = arr.map(obj => obj.count);
   let largest = Math.max(...countArray);
   if(largest === 0) {
-    return false;
+    return 0;
   }
   let bestList = iqArray.filter(obj => obj.count === largest); 
   return bestList.map(obj => obj.category).join(', ');
 };
 
 function declareStrengths(label) {
+  console.log('??????', label);
   intelReport.innerHTML = '';
   let headline = document.createElement('h2');
   headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: ${label} Intelligence!`;
   intelReport.appendChild(headline);
-}
+};
 
 function manageZeros() {
-  let h2zero = document.getElementById('h2zero');
-  h2zero.textContent = 'Please retake, all scores zero. You are capable of more than you think!';
+  intelReport.innerHTML = '';
+  let errorMessage = document.createElement('h2');
+  errorMessage.textContent = 'Please retake, all scores zero. You are capable of more than you think!';
+  intelReport.appendChild(errorMessage);
 };
 
 // make a chart
@@ -337,12 +334,18 @@ console.log(iqArray);
 
 function showMeaning() {
   // generate discription after chart
-  let h2 = document.getElementById('h2');
-  h2.textContent = 'What This Means...';
-  let p = document.getElementById('p');
-  p.textContent = 'This is an informal survey of multiple intelligences. Since it is not standardized your scores are only in comparison to yourself. It is interpreted by looking at relative highs and lows rather then exact numbers. Everyone is a different balance of these strengths and weakness.';
-  let element = document.createElement('button');
-  element.appendChild(document.createTextNode('See IQ description Types Here'));
-  let page = document.getElementById('btn');
-  page.appendChild(element);
+  let resultElement = document.getElementById('results-explained')
+  let h2El = document.createElement('h2');
+  h2El.textContent = 'What This Means...';
+  resultElement.appendChild(h2El);
+  
+  let pEl = document.createElement('p');
+  pEl.textContent = 'This is an informal survey of multiple intelligences. Since it is not standardized your scores are only in comparison to yourself. It is interpreted by looking at relative highs and lows rather then exact numbers. Everyone is a different balance of these strengths and weakness.';
+  resultElement.appendChild(pEl);
+
+  let aEl = document.createElement('a');
+  aEl.setAttribute('href', '../pages/iqtypes.html');
+  aEl.setAttribute('id', 'button');
+  aEl.appendChild(document.createTextNode('See IQ description Types Here'));
+  resultElement.appendChild(aEl);
 }

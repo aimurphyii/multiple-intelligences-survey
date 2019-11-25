@@ -214,7 +214,7 @@ form button:hover {
   float: left;
 }
 
-button {
+a#button {
   font-size: 14px;
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
@@ -227,10 +227,11 @@ button {
   padding: 10px 5px;
   transition: 350ms all;
   cursor: pointer;
+  text-decoration: none;
 }
 
 
-button:hover {
+a#button:hover {
   /* border:ridge; */
   background: #E8A959;
   color: #fff;
