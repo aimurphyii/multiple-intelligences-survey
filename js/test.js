@@ -334,7 +334,8 @@ console.log(iqArray);
 
 function showMeaning() {
   // generate discription after chart
-  let resultElement = document.getElementById('results-explained')
+  let resultElement = document.getElementById('results-explained');
+  console.log(resultElement);
   let h2El = document.createElement('h2');
   h2El.textContent = 'What This Means...';
   resultElement.appendChild(h2El);
