@@ -1,0 +1,55 @@
+.bios div{
+  min-height:200px;
+  margin: 50px auto;}
+
+.bios h3{
+  text-shadow: 1px 1px 1px #888;
+  font-size: larger;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
+.bios img{
+  max-width: 180px;
+}
+
+.musicly {
+  color: #2FB7D6;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.interly {
+  color:#e8a959;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.intraly {
+  color:#FCE958;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.spatially {
+  color:#5963E8;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+#about-head {
+  text-shadow: 1px 1px 1px #888;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
+.bios img {
+  float: left;
+  margin-right: 10px;
+  border-radius: 10%;
+}

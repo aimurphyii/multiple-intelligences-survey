@@ -1,0 +1,59 @@
+.iqtypes {
+  margin: 80px auto;
+}
+.iqtypes div {
+  min-height:200px;
+  margin: 20px;
+}
+
+.iqtypes h3 {
+  text-shadow: 1px 1px 1px #888;
+  font-size: larger;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
+.iqtypes img {
+  float: right;
+  margin-left: 10px;
+  border-radius: 10%;
+  width: 200px;
+  height: 200px;
+}
+
+#linguist h3 {
+  color:#CC444B;
+  background-color: rgba(204, 68, 75, 0.25);
+}
+
+#logic h3 {
+  color:#FF6FBB;
+  background-color: rgba(255, 111, 188, 0.25);
+}
+
+#aileen h3, #music h3 {
+  color:#2FB7D6;
+  background-color: rgba(47, 183, 214, 0.25);
+}
+
+#bodily h3 {
+  color: #70FFC8;
+  background-color: rgba(112, 255, 200, 0.25);
+}
+
+#brandyn h3, #spatial h3 {
+  color:#5963E8;
+  background-color: rgba(89, 99, 232, 0.25);
+}
+
+#adrienne h3, #intra h3 {
+  color:#FCE958;
+  background-color: rgba(224, 255, 98, 0.4);
+}
+
+#haley h3, #inter h3 {
+  color:#e8a959;
+  background-color: rgba(232, 170, 89, 0.25);
+}
