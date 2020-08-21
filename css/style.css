@@ -1,3 +1,6 @@
+/* every page */
+/* body */
+
 body{
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
@@ -6,10 +9,22 @@ body{
   color: #697E7F;
 }
 
+/* header styles */
+header, section {
+  width: 80%;
+  margin: 20px auto;
+  height: 250px;
+}
+
+h1{
+  font-size: 38px;
+}
+
 nav{
-  background-color: #697E7F;
-  width:80%;
-  margin: 50px auto;
+  background: #437D7F;
+  width: 100%;
+  margin: 0px auto;
+  clear: both;
 }
 
 nav li{
@@ -32,66 +47,63 @@ nav a:visited{
 
 nav a:hover{
   color: #D3FEFF;
-  background: #437D7F;
+  background-color: #697E7F;
   line-height: 80px;
-  padding-top: 33px;
-  padding-bottom: 33px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-/* nav li:hover{
-
-} */
-
-h1{
-  font-size: 40px;
-  margin-left: 20px;
-  text-shadow: 1px 1px 2px #888;
-  align-self: center;
+  padding-top:33px;
+  padding-bottom:33px;
+  padding-left:20px;
+  padding-right:20px;
 }
 
-.quote{
+#quote{
+  font-size: 16px;
+}
+
+.rightsmaller{
   float: right;
-  font-size: large;
-  text-shadow: 1px 1px 2px #888;
-  align-self: center;
-  max-width: 450px;
-  margin-right: 30px;
+  margin-top: 32px;
+  max-width: 40%;
+  text-align: justify;
 }
 
-header, section{
-  width: 80%;
-  margin: 20px auto;
+.left{
+  float: left;
+  max-width: 40%;
 }
 
-header{
-  display: flex;
-  justify-content: space-between;
+.body li a{
+  color: #437D7F;
+  text-decoration: none;
 }
+
+.body li a:hover{
+  text-decoration: underline;
+}
+
+/* main section */
 
 h2{
+  margin-top: 15px;
   font-size: 28px;
   color:#437D7F;
   text-shadow: 1px 1px 2px #888;
-  text-transform: capitalize;
   margin-bottom: 8px;
 }
+
+p{
+  margin-bottom: 25px;
+}
+
+.right{
+  float: right;
+  max-width: 50%;
+}
+
+/* other html pages */
 
 .intro{
   width:500px;
   line-height: 30px;
-}
-
-.head-pics{
-  width: 450px;
-  height: auto;
-  display: inline;
-}
-
-#imgflex{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
 }
 
 /* test */
@@ -102,18 +114,13 @@ h2{
   text-align: center;
   vertical-align: middle;
   line-height: 300px;
-  /* font-size: large; */
+  font-size: 20px;
   color:#fff;
-  background-color :rgba(89, 99, 232, 0.795);
+  background-color :rgba(89, 99, 232, 0.85);
 }
 .testanswer li{
   float: left;
-  margin-bottom: 20px;
-}
-
-#surveybottom{
-  margin: auto;
-  width: 960px;
+  margin-top: 240px;
 }
 
 #true{
@@ -136,7 +143,7 @@ h2{
   height:300px;
   vertical-align: middle;
   line-height: 300px;
-  background-color: rgba(105, 126, 127, 0.795);
+  background-color: rgba(105, 126, 127, 0.8);
   color: #fff;
   text-align: center;
   font-size: 100px;
@@ -146,11 +153,15 @@ h2{
   color:#697E7F;
 }
 
+#surveybottom{
+  margin: auto;
+  width: 960px;
+}
 /* forms */
 form{
   text-align: center;
   max-width: 275px;
-  border: 5px solid rgb(105, 126, 127);
+  border: 5px solid #697E7F;
   padding:10px;
   margin: 20px auto;
 }
@@ -168,16 +179,17 @@ input{
   margin:2px;
   width:150px;
 }
+
 input:focus {
 	border: 2px solid #70FFC8;
 }
+
 form button {
   font-size: 14px;
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
   margin-top: 8px;
   text-transform: capitalize;
-  /* border: groove; */
   border-radius: 3px;
   background: #437D7F ;
   color: #fff;
@@ -187,59 +199,50 @@ form button {
 }
 
 form button:hover {
-  /* border:ridge; */
   background: #85FCFF;
   color: #fff;
-  /* border-radius: 50%; */
-}
-.right{
-  float: right;
-  width: 480px;
 }
 
-
-.left{
-  float: left;
-  width: 480px;
-}
-
-.button{
-  max-width: 200px;
-  float: left;
-}
-
-.history{
-  margin-top: 20px;
-  max-width: 500px;
-  float: left;
-}
-
-a#button {
-  font-size: 14px;
+button {
+  font-size: 18px;
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
-  margin-top: 8px;
   text-transform: capitalize;
-  /* border: groove; */
   border-radius: 3px;
   background: #CC444B ;
   color: #fff;
   padding: 10px 5px;
   transition: 350ms all;
   cursor: pointer;
-  text-decoration: none;
 }
 
+#btn{
+  float: right;
+  margin-bottom: 30px;
+}
 
-a#button:hover {
-  /* border:ridge; */
+button:hover {
   background: #E8A959;
   color: #fff;
-  /* border-radius: 50%; */
+}
+
+#flxbox{
+  width:100%;
+  margin: 0 auto;
+  clear: both;
+}
+#imgflex img{
+  clip-path: ellipse(45% 50% at 50% 50%);
+  max-width: 32%;
+}
+#imgflex li{
+  display: inline;
 }
 
 /* iq types*/
-
+.IQtypes{
+  margin: 240px auto;
+}
 .IQtypes div{
   min-height:200px;
   margin: 20px;
@@ -265,19 +268,16 @@ a#button:hover {
 #linguist h3{
   color:#CC444B;
   background-color: rgba(204, 68, 75, 0.25);
-  /* background-color: rgba(224, 255, 98, 0.25); */
 }
 
 #logic h3{
-  /* color: #437D7F; */
-  /* background-color: rgba(67, 125, 127, 0.25); */
   color:#FF6FBB;
   background-color: rgba(255, 111, 188, 0.25);
 }
 
-#music h3{
-  color:#85FCFF;
-  background-color: rgba(133, 253, 255, 0.25);
+#aileen h3, #music h3{
+  color:#2FB7D6;
+  background-color: rgba(47, 183, 214, 0.25);
 }
 
 #bodily h3{
@@ -285,26 +285,26 @@ a#button:hover {
   background-color: rgba(112, 255, 200, 0.25);
 }
 
-#spatial h3{
+#brandyn h3, #spatial h3{
   color:#5963E8;
   background-color: rgba(89, 99, 232, 0.25);
 }
 
-#intra h3{
+#adrienne h3, #intra h3{
   color:#FCE958;
-  background-color: rgba(224, 255, 98, 0.25);
+  background-color: rgba(224, 255, 98, 0.4);
 }
 
-#inter h3{
+#haley h3, #inter h3{
   color:#e8a959;
   background-color: rgba(232, 170, 89, 0.25);
 }
+/* end of iqtypes rules */
 
+/* bios styling */
 .bios div{
   min-height:200px;
-  /* margin: 20px; */
-  margin: 50px auto;
-}
+  margin: 50px auto;}
 
 .bios h3{
   text-shadow: 1px 1px 1px #888;
@@ -315,6 +315,33 @@ a#button:hover {
   padding-left: 15px;
 }
 
+.bios img{
+  max-width: 180px;
+}
+
+.musicly {
+  color: #2FB7D6;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.interly{
+  color:#e8a959;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.intraly{
+  color:#FCE958;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.spatially{
+  color:#5963E8;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
 
 #about-head {
   text-shadow: 1px 1px 1px #888;
@@ -324,7 +351,6 @@ a#button:hover {
   line-height: 50px;
   padding-left: 15px;
 }
-
 
 .bios img{
   float: left;
