@@ -1,3 +1,6 @@
+/* every page */
+/* body */
+
 body{
   font-family: 'Josefin Sans', sans-serif;
   font-size: 20px;
@@ -6,7 +9,7 @@ body{
   color: #697E7F;
 }
 
-/* header nav styles */
+/* header styles */
 header, section {
   width: 80%;
   margin: 20px auto;
@@ -17,23 +20,11 @@ h1{
   font-size: 38px;
 }
 
-h2{
-  margin-top: 15px;
-  font-size: 28px;
-  color:#437D7F;
-  text-shadow: 1px 1px 2px #888;
-  /* text-transform: capitalize; */
-  margin-bottom: 8px;
-}
-
-p{
-  margin-bottom: 25px;
-}
-
 nav{
   background: #437D7F;
   width:80%;
   margin: 80px auto;
+  clear: both;
 }
 
 nav li{
@@ -63,14 +54,9 @@ nav a:hover{
   padding-left:20px;
   padding-right:20px;
 }
+
 #quote{
   font-size: 16px;
-}
-
-
-.right{
-  float: right;
-  max-width: 50%;
 }
 
 .rightsmaller{
@@ -85,27 +71,6 @@ nav a:hover{
   max-width: 40%;
 }
 
-.leftlarger{
-  float: left;
-  max-width: 60%;
-}
-/* end of nav */
-
-.intro{
-  width:500px;
-  line-height: 30px;
-  /* position: absolute;
-  top: 220px;
-  left: 50%;
-  transform: translate(-50%, -50%); */
-}
-/* .bg{
-  max-width: 500px;
-  margin-left: 40%;
-  margin-bottom:50px;
-  margin-top:-50px;
-} */
-
 .body li a{
   color: #437D7F;
   text-decoration: none;
@@ -114,6 +79,33 @@ nav a:hover{
 .body li a:hover{
   text-decoration: underline;
 }
+
+/* main section */
+
+h2{
+  margin-top: 15px;
+  font-size: 28px;
+  color:#437D7F;
+  text-shadow: 1px 1px 2px #888;
+  margin-bottom: 8px;
+}
+
+p{
+  margin-bottom: 25px;
+}
+
+.right{
+  float: right;
+  max-width: 50%;
+}
+
+/* other html pages */
+
+.intro{
+  width:500px;
+  line-height: 30px;
+}
+
 /* test */
 #question{
   margin: 5px auto;
@@ -198,7 +190,6 @@ form button {
   text-align: center;
   margin-top: 8px;
   text-transform: capitalize;
-  /* border: groove; */
   border-radius: 3px;
   background: #437D7F ;
   color: #fff;
@@ -208,10 +199,8 @@ form button {
 }
 
 form button:hover {
-  /* border:ridge; */
   background: #85FCFF;
   color: #fff;
-  /* border-radius: 50%; */
 }
 
 button {
@@ -219,7 +208,6 @@ button {
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
   text-transform: capitalize;
-  /* border: groove; */
   border-radius: 3px;
   background: #CC444B ;
   color: #fff;
@@ -234,10 +222,8 @@ button {
 }
 
 button:hover {
-  /* border:ridge; */
   background: #E8A959;
   color: #fff;
-  /* border-radius: 50%; */
 }
 
 #flxbox{
@@ -281,12 +267,9 @@ button:hover {
 #linguist h3{
   color:#CC444B;
   background-color: rgba(204, 68, 75, 0.25);
-  /* background-color: rgba(224, 255, 98, 0.25); */
 }
 
 #logic h3{
-  /* color: #437D7F; */
-  /* background-color: rgba(67, 125, 127, 0.25); */
   color:#FF6FBB;
   background-color: rgba(255, 111, 188, 0.25);
 }
