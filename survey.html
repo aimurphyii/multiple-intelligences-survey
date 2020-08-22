@@ -1,43 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="../css/reset.css">
-  <link rel="stylesheet" type="text/css" href="../css/style.css">
+  <title>Multiple Intelligences Survey</title>
+  <link rel="stylesheet" type="text/css" href="css/reset.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/survey.css">
   <style>
     @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400,600');
   </style>
   <style>
     @import url('https://fonts.googleapis.com/css?family=Josefin+Sans:400i');
   </style>
-  <title>Multiple Intelligences Survey</title>
 </head>
 
 <body>
   <header>
-    <h1>Multiple Intelligences Explained</h1>
-    <h3 class="quote"><i>“It’s not how smart you are that matters, what really counts is how are you smart”.
-      </i><strong>– Howard Gardner</strong></h3>
+    <img class="left" src="../img/multilogooil.png">
+    <h3 id="quote"><em>“It’s not how smart you are that matters, what really counts is how are you smart”. </em> – Howard Gardner</h3>
+    
+    <nav>
+      <ul>
+        <li><a href="index.html">Main</a></li>
+        <li><a href="iqtypes.html">Intelligence Types</a></li>
+        <li><a href="survey.html">Take The Survey</a></li>
+        <li><a href="about.html">About Us</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <nav>
-    <ul>
-      <li><a class="" href="../index.html">Main</a></li>
-      <li><a href="iqtypes.html">Intelligence Types</a></li>
-      <li><a href="testsample.html">Take The Survey</a></li>
-      <li><a href="About.html">About Us</a></li>
-    </ul>
-  </nav>
 
   <section class="intro" id="input"> 
     <h2>Instructions:</h2>
 
-    <p>
-      This quiz will help you identify your areas of strongest intelligence. Read each statement. If it expresses some
-      characteristic of yours and sounds true for the most part, click on “T” for true. If it doesn’t, choose an “F” for
-      false.
-    </p>
+    <p>This quiz will help you identify your areas of strongest intelligence. Read each statement. If it expresses some characteristic of yours and sounds true for the most part, click on “T” for true. If it doesn’t, choose an “F” for false.</p>
 
     <form id="userform">
       <fieldset>
@@ -53,7 +48,6 @@
     </form>
   </section>
 
-  <!-- make a template for each test question prompt -->
   <section id="surveytop">
     <h2 id="qtitle"></h2>
     <div id="qaudio"></div>
@@ -66,7 +60,6 @@
     <ul class="testanswer" id="testanswer">
     </ul>
   </section>
-  <!-- end template -->
 
   <section id="results">
   </section>
@@ -76,8 +69,11 @@
   <section id="results-explained">
   </section>
 
-<script src="../js/test.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
-</body>
+  <footer>
+    <p>&copy; copyright 2019</p>
+  </footer>
 
+  <script src="../js/test.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+</body>
 </html>

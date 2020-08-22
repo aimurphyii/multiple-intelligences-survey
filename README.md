@@ -1,18 +1,20 @@
 # multiple-intelligences-survey
-*Code 201 Group Final Project: App to evaluate 7 types of intelligence, for initial use in schools*
-#### GO TEAM RAINBOW UNICORNS!!!
+App to evaluate 7 types of intelligence, for use in schools
 
-* YOU are a creative coding professional. 
-* You are going to make awesome things.
-* Confide in your teammates and your ducks. *_WE_* should be the ducks! 
+## Authors
+- Adrienne Easton
+- Aileen Murphy
+- Brandyn Vay
+- Haley Lewis
 
+### Stretch goals
+- Progress bar across top.
+- Speaker button next to question to have the it read to them if they want. 
+- Email link to self
+- Print friendly page
+- Hyperlinks for each part of the pie chart linking to the area of intelligence on decsriptions page.
+- Button linking to more formal results page. 
+- Persistence of info.
 
-
-###### Quack!
-
-##### Quack!
-
-#### Quack!
-
-### Quack!
-
+### To do
+- find better color contrast
