@@ -17,4 +17,4 @@ App to evaluate 7 types of intelligence, for use in schools
 - Persistence of info.
 
 ### To do
-- find better color contrast for accessibility
+- find better color contrast
