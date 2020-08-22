@@ -114,3 +114,26 @@ p {
   display: inline;
 } 
 
+button {
+  font-size: 18px;
+  font-family: 'Josefin Sans', sans-serif;
+  text-align: center;
+  text-transform: capitalize;
+  border-radius: 3px;
+  background: #CC444B ;
+  color: #fff;
+  padding: 10px 5px;
+  transition: 350ms all;
+  cursor: pointer;
+}
+
+#btn {
+  float: right;
+  margin-bottom: 30px;
+}
+
+button:hover {
+  background: #E8A959;
+  color: #fff;
+}
+

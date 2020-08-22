@@ -94,7 +94,7 @@ form button:hover {
   color: #fff;
 }
 
-button {
+/* button {
   font-size: 18px;
   font-family: 'Josefin Sans', sans-serif;
   text-align: center;
@@ -115,7 +115,7 @@ button {
 button:hover {
   background: #E8A959;
   color: #fff;
-}
+} */
 
 #flxbox {
   width:100%;
