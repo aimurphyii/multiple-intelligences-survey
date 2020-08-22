@@ -22,3 +22,4 @@ App to evaluate 7 types of intelligence, for use in schools
 - render iq types at bottom of results page
 - put event listeners in a function
 - create json file for questions?
+- improve naming for surveytop, mid, bottom

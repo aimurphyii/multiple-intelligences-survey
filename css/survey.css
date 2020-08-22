@@ -66,14 +66,14 @@ legend {
 
 label {
 	float: left;
-	text-align: right;
-	margin-right: 15px;
-	width: 100px;
+	text-align: left;
+	margin-left: 15px;
+	width: 150px;
 }
 
 input {
-  margin:2px;
-  width:150px;
+  margin: 2px;
+  width: 150px;
 }
 
 input:focus {
