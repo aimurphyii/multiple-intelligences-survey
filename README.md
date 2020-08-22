@@ -18,8 +18,6 @@ App to evaluate 7 types of intelligence, for use in schools
 
 ### To do
 - find better color contrast
-- update bio photo
 - render iq types at bottom of results page
 - put event listeners in a function
 - create json file for questions?
-- improve naming for surveytop, mid, bottom
