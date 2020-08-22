@@ -4,15 +4,12 @@ body {
   line-height: 1.5em;
   background-color: #E8F6F7;
   color: #697E7F;
-}
-
-header, section {
   width: 80%;
   margin: 20px auto;
 }
 
 header {
-  height: 250px;
+  height: 210px;
 }
 
 h1 {
@@ -56,33 +53,40 @@ nav a:hover {
 
 #quote {
   font-size: 16px;
-}
-
-.rightsmaller {
   float: right;
   margin-top: 32px;
   max-width: 40%;
   text-align: justify;
 }
 
+/* main page */
+
+#banner {
+  width: 100%;
+  margin: 0 auto;
+  clear: both;
+}
+#banner-imgs img {
+  clip-path: ellipse(45% 50% at 50% 50%);
+  max-width: 32%;
+}
+#banner-imgs li {
+  display: inline;
+} 
+
 .left {
   float: left;
   max-width: 40%;
 }
 
-.body li a {
-  color: #437D7F;
-  text-decoration: none;
-}
-
-.body li a:hover {
+#schools li a:hover {
   text-decoration: underline;
 }
 
 h2 {
   margin-top: 15px;
   font-size: 28px;
-  color:#437D7F;
+  color: #437D7F;
   text-shadow: 1px 1px 2px #888;
   margin-bottom: 8px;
 }
@@ -96,44 +100,160 @@ p {
   max-width: 50%;
 }
 
-.intro {
-  width:500px;
-  line-height: 30px;
-}
-
-#banner {
-  width:100%;
-  margin: 0 auto;
-  clear: both;
-}
-#banner-imgs img {
-  clip-path: ellipse(45% 50% at 50% 50%);
-  max-width: 32%;
-}
-#banner-imgs li {
-  display: inline;
-} 
-
-button {
+#btn {
   font-size: 18px;
-  font-family: 'Josefin Sans', sans-serif;
   text-align: center;
   text-transform: capitalize;
   border-radius: 3px;
   background: #CC444B ;
   color: #fff;
-  padding: 10px 5px;
+  padding: 5px 10px;
   transition: 350ms all;
   cursor: pointer;
-}
-
-#btn {
   float: right;
-  margin-bottom: 30px;
+  text-decoration: none;
+  border: 1px solid black;
 }
 
-button:hover {
+#btn:hover {
   background: #E8A959;
   color: #fff;
+}
+
+/* About us page layout */
+
+.bios div{
+  min-height:200px;
+  margin: 50px auto;}
+
+.bios h3{
+  text-shadow: 1px 1px 1px #888;
+  font-size: larger;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
+.bios img{
+  max-width: 180px;
+}
+
+#about-head {
+  text-shadow: 1px 1px 1px #888;
+  text-transform: capitalize;
+  text-align: center;
+  margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
+.bios img {
+  float: left;
+  margin-right: 10px;
+  border-radius: 10%;
+}
+
+/* IQtypes page layout */
+
+.iqtypes {
+  margin: 80px auto;
+}
+.iqtypes div {
+  min-height:200px;
+  margin: 20px;
+}
+
+.iqtypes h3 {
+  text-shadow: 1px 1px 1px #888;
+  font-size: larger;
+  text-transform: capitalize;
+  margin-bottom: 20px;
+  line-height: 50px;
+  padding-left: 15px;
+}
+
+.iqtypes img {
+  float: right;
+  margin-left: 10px;
+  border-radius: 10%;
+  width: 200px;
+  height: 200px;
+}
+
+/* label colors */
+
+#linguist h3 {
+  color:#CC444B;
+  background-color: rgba(204, 68, 75, 0.25);
+}
+
+#logic h3 {
+  color:#FF6FBB;
+  background-color: rgba(255, 111, 188, 0.25);
+}
+
+#aileen h3, #music h3 {
+  color:#2FB7D6;
+  background-color: rgba(47, 183, 214, 0.25);
+}
+
+#bodily h3 {
+  color: #70FFC8;
+  background-color: rgba(112, 255, 200, 0.25);
+}
+
+#brandyn h3, #spatial h3 {
+  color:#5963E8;
+  background-color: rgba(89, 99, 232, 0.25);
+}
+
+#adrienne h3, #intra h3 {
+  color:#FCE958;
+  background-color: rgba(224, 255, 98, 0.4);
+}
+
+#haley h3, #inter h3 {
+  color:#e8a959;
+  background-color: rgba(232, 170, 89, 0.25);
+}
+
+.musicly {
+  color: #2FB7D6;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.interly {
+  color:#e8a959;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.intraly {
+  color:#FCE958;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+.spatially {
+  color:#5963E8;
+  text-shadow: 1px 1px 2px #888;
+  text-transform: uppercase;
+}
+
+/* Survey page and about us page intro */
+
+.intro {
+  width: 500px;
+  line-height: 30px;
+  margin: 0px auto;
+}
+
+/* footer */
+
+footer {
+  clear: both;
+  text-align: center;
 }
 
