@@ -19,3 +19,4 @@ App to evaluate 7 types of intelligence, for use in schools
 ### To do
 - find better color contrast
 - create json file for questions?
+- button to retake the test
