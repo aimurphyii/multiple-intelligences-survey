@@ -20,3 +20,4 @@ App to evaluate 7 types of intelligence, for use in schools
 - find better color contrast
 - create json file for questions?
 - change nav link from take teh survey to survey results
+- get rid of mystery box above above chart
