@@ -100,7 +100,7 @@ p {
   max-width: 50%;
 }
 
-#btn {
+#btn, #reset {
   font-size: 18px;
   text-align: center;
   text-transform: capitalize;
@@ -115,7 +115,7 @@ p {
   border: 1px solid black;
 }
 
-#btn:hover {
+#btn:hover, #reset:hover {
   background: #E8A959;
   color: #fff;
 }

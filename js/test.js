@@ -32,7 +32,6 @@ let IqType = function (qvalue, category, index, filepath) {
   this.category = category;
   this.index = index;
   this.filepath = filepath;
-
   testQuestions.push(this);
 };
 
@@ -137,7 +136,7 @@ function checkProgress() {
   if (currentQuestion < testQuestions.length) {
     runTest();
   } else {
-    showMeResults();
+    showResults();
   }
 }
 
@@ -184,6 +183,11 @@ function findHighest(arr) {
   let bestList = arr.filter(obj => obj.count === largest); 
   return bestList.map(obj => obj.category).join(', ');
 };
+
+function createReset() {
+  let button = document.getElementById('reset')
+  button.innerText = "Reset test!";
+}
 
 function declareStrengths(label) {
   intelReport.innerHTML = '';
@@ -278,22 +282,20 @@ function compileTestData() {
   localStorage.setItem('scores', JSON.stringify(iqArray));
 }
 
-function showMeResults() {
-  compileTestData();
-  hideTest();
-  renderResults(iqArray);
-}
-
 function checkLocalStorage() {
-  console.log(localStorage.getItem('scores'));
   if(localStorage.getItem('scores') !== null) {
     hideForm();
     let iqArray = JSON.parse(localStorage.getItem('scores'));
-    console.log('storeddata', iqArray);
     renderResults(iqArray);
   } else {
     (userForm.addEventListener('submit', handleForm));
   }
+}
+
+function showResults() {
+  compileTestData();
+  hideTest();
+  renderResults(iqArray);
 }
 
 function renderResults(arr) {
@@ -301,6 +303,7 @@ function renderResults(arr) {
   declareStrengths(label);
   createChart(arr);
   showMeaning();
+  createReset();
 }
 
 checkLocalStorage();
