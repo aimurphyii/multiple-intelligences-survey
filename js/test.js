@@ -220,6 +220,7 @@ function createChart(arr) {
     ],
     datasets: [
       {
+        label: "Relative Strength of Intelligence",
         data: arr.map(obj => obj.count),
         backgroundColor: [
           'rgba(204, 68, 75, 0.60)',
@@ -241,7 +242,6 @@ function createChart(arr) {
   let myPieChart = new Chart(ctx, {
     type: 'bar',
     data: data,
-    // options: options
   });
 }
 
