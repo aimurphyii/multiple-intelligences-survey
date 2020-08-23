@@ -8,6 +8,7 @@ let answerTrue = document.createElement('li');
 let answerFalse = document.createElement('li');
 let question = document.createElement('p');
 let intelReport = document.getElementById('survey-results');
+let button = document.getElementById('reset')
 
 let testQuestions = [];
 let iqArray = [];
@@ -185,8 +186,14 @@ function findHighest(arr) {
 };
 
 function createReset() {
-  let button = document.getElementById('reset')
+  // let button = document.getElementById('reset')
   button.innerText = "Reset test!";
+}
+
+function handleReset() {
+  console.log("reset");
+  localStorage.clear();
+  location.reload();
 }
 
 function declareStrengths(label) {
@@ -304,6 +311,7 @@ function renderResults(arr) {
   createChart(arr);
   showMeaning();
   createReset();
+  button.addEventListener('click', handleReset);
 }
 
 checkLocalStorage();
