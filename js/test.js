@@ -8,7 +8,7 @@ let answerTrue = document.createElement('li');
 let answerFalse = document.createElement('li');
 let question = document.createElement('p');
 let intelReport = document.getElementById('survey-results');
-let button = document.getElementById('reset')
+// let button = document.getElementById('reset')
 
 let testQuestions = [];
 let iqArray = [];
@@ -185,16 +185,9 @@ function findHighest(arr) {
   return bestList.map(obj => obj.category).join(', ');
 };
 
-function createReset() {
-  // let button = document.getElementById('reset')
-  button.innerText = "Reset test!";
-}
 
-function handleReset() {
-  console.log("reset");
-  localStorage.clear();
-  location.reload();
-}
+
+
 
 function declareStrengths(label) {
   intelReport.innerHTML = '';
@@ -305,13 +298,29 @@ function showResults() {
   renderResults(iqArray);
 }
 
+function createReset() {
+  let body = document.getElementsByTagName("body")[0];
+  let chart = document.getElementsByTagName('canvas')[0];
+  var btn = document.createElement("reset");
+  btn.innerHTML = "Reset Test!";  
+  btn.setAttribute("type", "click"); 
+  btn.setAttribute("id", "reset");
+  body.insertBefore(btn, chart);
+  btn.addEventListener('click', handleReset);
+}
+
+function handleReset() {
+  console.log("reset");
+  localStorage.clear();
+  location.reload();
+}
+
 function renderResults(arr) {
   let label = findHighest(arr);
   declareStrengths(label);
   createChart(arr);
   showMeaning();
   createReset();
-  button.addEventListener('click', handleReset);
 }
 
 checkLocalStorage();
