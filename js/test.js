@@ -22,10 +22,11 @@ let spatialCount = 0;
 let interCount = 0;
 let intraCount = 0;
 
-let UserInfo = function (name, birthdate, testdate) {
-  this.name = name;
-  this.birthdate = birthdate;
-  this.testdate = testdate;
+let UserInfo = function (firstName, lastName, birthdate, testdate) {
+  this.firstName = firstName;
+  this.lastName = lastName;
+  this.birthDate = birthDate;
+  this.testDate = testDate;
 };
 
 let IqType = function (qvalue, category, index, filepath) {
@@ -89,10 +90,11 @@ function startTest() {
 
 function handleForm(event) {
   event.preventDefault();
-  let userName = event.target.name.value;
+  let firstName = event.target.firstname.value;
+  let lastName = event.target.lastname.value;
   let birthDate = event.target.birthdate.value;
   let testDate = event.target.date.value;
-  let newUser = new UserInfo(userName, birthDate, testDate);
+  let newUser = new UserInfo(firstName, lastName, birthDate, testDate);
   savedUser.push(newUser);
   localStorage.setItem('user', JSON.stringify(savedUser));
   startTest();
@@ -202,7 +204,7 @@ function declareStrengths(label) {
     headline.setAttribute("id", "redo");
     intelReport.appendChild(headline);
   } else {
-    headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: ${label} Intelligence!`;
+    headline.innerHTML = `${savedUser[0].firstname} ${savedUser[0].lastname}, your strongest intelligence is: ${label} Intelligence!`;
     intelReport.appendChild(headline);
   }
 };
