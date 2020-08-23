@@ -74,6 +74,11 @@ new IqType('I can add or multiply quickly in my head.', 'logic', '5', 'audio/q5.
 
 // page 1 displayed - personal info form
 
+function removeForm() {
+  let input = document.getElementById('input');
+  input.parentElement.removeChild(input);
+}
+
 function handleUserInfo(event) {
   event.preventDefault();
   let userName = event.target.name.value;
@@ -81,16 +86,13 @@ function handleUserInfo(event) {
   let testDate = event.target.date.value;
   let newUser = new UserInfo(userName, birthDate, testDate);
   savedUser.push(newUser);
-
-  let input = document.getElementById('input');
-  input.parentElement.removeChild(input);
+  localStorage.setItem('user', JSON.stringify(savedUser));
+  removeForm();
   showQuestion();
   showQuestionNumber();
   // showAudio();
   showAnswerChoices();
 }
-
-userForm.addEventListener('submit', handleUserInfo);
 
 // page 2 displayed - questions and answer choices
 
@@ -175,13 +177,16 @@ function findHighest(arr) {
   if(largest === 0) {
     return 0;
   }
-  let bestList = iqArray.filter(obj => obj.count === largest); 
+  let bestList = arr.filter(obj => obj.count === largest); 
   return bestList.map(obj => obj.category).join(', ');
 };
 
 function declareStrengths(label) {
   intelReport.innerHTML = '';
   let headline = document.createElement('h2');
+  if(localStorage.getItem('user')) {
+    savedUser = JSON.parse(localStorage.getItem('user'))
+  }
   headline.innerHTML = `${savedUser[0].name}, your strongest intelligence is: ${label} Intelligence!`;
   intelReport.appendChild(headline);
 };
@@ -193,7 +198,7 @@ function manageZeros() {
   intelReport.appendChild(errorMessage);
 };
 
-function createChart() {
+function createChart(arr) {
   let data = {
     labels: [
       'Verbal-Linguistic', 
@@ -206,7 +211,7 @@ function createChart() {
     ],
     datasets: [
       {
-        data: iqArray.map(obj => obj.count),
+        data: arr.map(obj => obj.count),
         backgroundColor: [
           'rgba(204, 68, 75, 0.60)',
           'rgba(255, 111, 188, 0.60)',
@@ -242,9 +247,9 @@ function showMeaning() {
   resultElement.appendChild(pEl);
 
   let aEl = document.createElement('a');
-  aEl.setAttribute('href', '../pages/iqtypes.html');
+  aEl.setAttribute('href', 'iqtypes.html');
   aEl.setAttribute('id', 'button');
-  aEl.appendChild(document.createTextNode('See IQ description Types Here'));
+  aEl.appendChild(document.createTextNode('See IQ description types here.'));
   resultElement.appendChild(aEl);
 }
 
@@ -257,6 +262,8 @@ function showMeResults() {
   iqArray.push({category: 'Interpersonal', count: interCount});
   iqArray.push({category: 'Intrapersonal', count: intraCount});
 
+  localStorage.setItem('scores', JSON.stringify(iqArray));
+
   // Turn off true/false event handler
   document.getElementById("true").removeEventListener('click', handleTrue);
   document.getElementById("false").removeEventListener('click', handleFalse);
@@ -267,12 +274,30 @@ function showMeResults() {
   surveyAnswers.parentElement.removeChild(surveyAnswers);
 
   // Create results page
-  let label = findHighest(iqArray);
+  renderResults(iqArray);
+}
+
+function checkLocalStorage() {
+  console.log(localStorage.getItem('scores'));
+  if(localStorage.getItem('scores') !== null) {
+    removeForm();
+    let iqArray = JSON.parse(localStorage.getItem('scores'));
+    console.log('storeddata', iqArray);
+    renderResults(iqArray);
+  } else {
+    (userForm.addEventListener('submit', handleUserInfo));
+  }
+}
+
+function renderResults(arr) {
+  let label = findHighest(arr);
   if(label) {
     declareStrengths(label);
-    createChart();
+    createChart(arr);
     showMeaning();
   } else {
     manageZeros();
   }
 }
+
+checkLocalStorage();
