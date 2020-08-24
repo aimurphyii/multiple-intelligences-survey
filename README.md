@@ -18,3 +18,4 @@ App to evaluate 7 types of intelligence, for use in schools
 
 ### To do
 - create json file for questions?
+- check and improve responsiveness
