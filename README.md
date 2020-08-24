@@ -19,3 +19,6 @@ App to evaluate 7 types of intelligence, for use in schools
 ### To do
 - create json file for questions?
 - check and improve responsiveness
+- make table start at 0
+- resize test page so easy to see everything at once
+- solve mystery of random periods
