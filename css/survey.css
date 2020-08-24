@@ -18,7 +18,7 @@
   height:300px;
   vertical-align: middle;
   line-height: 300px;
-  background-color: rgb(105, 126, 127, 0.795);
+  background-color: rgb(105, 126, 127);
   color: #fff;
   text-align: center;
   font-size: 100px;
@@ -26,7 +26,7 @@
 
 #true:hover {
   background-color: #85FCFF;
-  color:#697E7F;
+  color: #5A6C6C;
 }
 
 #false {
@@ -34,7 +34,7 @@
   height: 300px;
   vertical-align: middle;
   line-height: 300px;
-  background-color: rgba(105, 126, 127, 0.8);
+  background-color: rgb(105, 126, 127);
   color: #fff;
   text-align: center;
   font-size: 100px;
@@ -42,7 +42,7 @@
 
 #false:hover {
   background-color: #85FCFF;
-  color: #697E7F;
+  color: #5A6C6C;
 }
 
 #survey-answers {
@@ -54,7 +54,7 @@
 form {
   text-align: center;
   max-width: 275px;
-  border: 5px solid #697E7F;
+  border: 5px solid #5A6C6C;
   padding: 10px;
   margin: 20px auto;
 }
@@ -96,7 +96,7 @@ form button {
 
 form button:hover {
   background: #85FCFF;
-  color: #fff;
+  color: #3e4b4b;
 }
 
 #redo {

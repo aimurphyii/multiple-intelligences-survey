@@ -8,7 +8,6 @@ let answerTrue = document.createElement('li');
 let answerFalse = document.createElement('li');
 let question = document.createElement('p');
 let intelReport = document.getElementById('survey-results');
-// let button = document.getElementById('reset')
 
 let testQuestions = [];
 let iqArray = [];
@@ -22,11 +21,11 @@ let spatialCount = 0;
 let interCount = 0;
 let intraCount = 0;
 
-let UserInfo = function (firstName, lastName, birthdate, testdate) {
-  this.firstName = firstName;
-  this.lastName = lastName;
-  this.birthDate = birthDate;
-  this.testDate = testDate;
+let UserInfo = function (first, last, birthdate, testdate) {
+  this.firstName = first;
+  this.lastName = last;
+  this.birthDate = birthdate;
+  this.testDate = testdate;
 };
 
 let IqType = function (qvalue, category, index, filepath) {
@@ -89,6 +88,7 @@ function startTest() {
 }
 
 function handleForm(event) {
+  console.log(event);
   event.preventDefault();
   let firstName = event.target.firstname.value;
   let lastName = event.target.lastname.value;
@@ -204,7 +204,7 @@ function declareStrengths(label) {
     headline.setAttribute("id", "redo");
     intelReport.appendChild(headline);
   } else {
-    headline.innerHTML = `${savedUser[0].firstname} ${savedUser[0].lastname}, your strongest intelligence is: ${label} Intelligence!`;
+    headline.innerHTML = `${savedUser[0].firstName} ${savedUser[0].lastName}, your strongest intelligence is: ${label} Intelligence!`;
     intelReport.appendChild(headline);
   }
 };

@@ -3,13 +3,13 @@ body {
   font-size: 20px;
   line-height: 1.5em;
   background-color: #E8F6F7;
-  color: #697E7F;
+  color: #5A6C6C;
   width: 80%;
   margin: 20px auto;
 }
 
 header {
-  height: 210px;
+  height: 230px;
 }
 
 h1 {
@@ -43,7 +43,7 @@ nav a:visited {
 
 nav a:hover {
   color: #D3FEFF;
-  background-color: #697E7F;
+  background-color: #5A6C6C;
   line-height: 80px;
   padding-top:33px;
   padding-bottom:33px;
@@ -52,7 +52,7 @@ nav a:hover {
 }
 
 #quote {
-  font-size: 16px;
+  font-size: 20px;
   float: right;
   margin-top: 32px;
   max-width: 40%;
@@ -86,7 +86,6 @@ nav a:hover {
 h2 {
   margin-top: 15px;
   font-size: 28px;
-  color: #437D7F;
   text-shadow: 1px 1px 2px #888;
   margin-bottom: 8px;
 }
@@ -161,7 +160,7 @@ p {
 }
 .iqtypes div {
   min-height:200px;
-  margin: 20px;
+  margin: 20px 0px 20px 0px;
 }
 
 .iqtypes h3 {
@@ -169,6 +168,7 @@ p {
   font-size: larger;
   text-transform: capitalize;
   margin-bottom: 20px;
+  margin-right: 20px;
   line-height: 50px;
   padding-left: 15px;
 }
@@ -179,27 +179,28 @@ p {
   border-radius: 10%;
   width: 200px;
   height: 200px;
+  /* border: 1px solid black; */
 }
 
 /* label colors */
 
 #linguist h3 {
-  color:#CC444B;
+  color:#9F2D2F;
   background-color: rgba(204, 68, 75, 0.25);
 }
 
 #logic h3 {
-  color:#FF6FBB;
+  color:#BD0065;
   background-color: rgba(255, 111, 188, 0.25);
 }
 
 #aileen h3, #music h3 {
-  color:#2FB7D6;
+  color:#186172;
   background-color: rgba(47, 183, 214, 0.25);
 }
 
 #bodily h3 {
-  color: #70FFC8;
+  color: #007A4B;
   background-color: rgba(112, 255, 200, 0.25);
 }
 
@@ -209,29 +210,29 @@ p {
 }
 
 #adrienne h3, #intra h3 {
-  color:#FCE958;
+  color:#7C6E03;
   background-color: rgba(224, 255, 98, 0.4);
 }
 
 #haley h3, #inter h3 {
-  color:#e8a959;
+  color:#875412;
   background-color: rgba(232, 170, 89, 0.25);
 }
 
 .musicly {
-  color: #2FB7D6;
+  color: #186172;
   text-shadow: 1px 1px 2px #888;
   text-transform: uppercase;
 }
 
 .interly {
-  color:#e8a959;
+  color:#875412;
   text-shadow: 1px 1px 2px #888;
   text-transform: uppercase;
 }
 
 .intraly {
-  color:#FCE958;
+  color:#7C6E03;
   text-shadow: 1px 1px 2px #888;
   text-transform: uppercase;
 }
