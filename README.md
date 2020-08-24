@@ -22,3 +22,5 @@ App to evaluate 7 types of intelligence, for use in schools
 - make table start at 0
 - resize test page so easy to see everything at once
 - solve mystery of random periods
+- prompt - are you sure you want to delete current results
+- have test instructions on each page
