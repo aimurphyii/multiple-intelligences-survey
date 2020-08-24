@@ -103,4 +103,9 @@ form button:hover {
   color: red;
 }
 
+#survey-results h2, #qtitle {
+  line-height: 30px;
+  margin: 50px auto;
+}
+
 

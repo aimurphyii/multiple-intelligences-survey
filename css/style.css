@@ -52,7 +52,7 @@ nav a:hover {
 }
 
 #quote {
-  font-size: 20px;
+  font-size: 18px;
   float: right;
   margin-top: 32px;
   max-width: 40%;
@@ -63,7 +63,7 @@ nav a:hover {
 
 #banner {
   width: 100%;
-  margin: 0 auto;
+  margin: 50px auto;
   clear: both;
 }
 #banner-imgs img {
@@ -121,11 +121,12 @@ p {
 
 /* About us page layout */
 
-.bios div{
+article {
   min-height:200px;
-  margin: 50px auto;}
+  margin: 50px auto;
+}
 
-.bios h3{
+h3 {
   text-shadow: 1px 1px 1px #888;
   font-size: larger;
   text-transform: capitalize;
@@ -134,7 +135,15 @@ p {
   padding-left: 15px;
 }
 
-.bios img{
+.bios h3 {
+  margin-left: 20px;
+}
+
+.iqtypes h3 {
+  margin-right: 20px;
+}
+
+.bios img {
   max-width: 180px;
 }
 
@@ -158,20 +167,6 @@ p {
 .iqtypes {
   margin: 80px auto;
 }
-.iqtypes div {
-  min-height:200px;
-  margin: 20px 0px 20px 0px;
-}
-
-.iqtypes h3 {
-  text-shadow: 1px 1px 1px #888;
-  font-size: larger;
-  text-transform: capitalize;
-  margin-bottom: 20px;
-  margin-right: 20px;
-  line-height: 50px;
-  padding-left: 15px;
-}
 
 .iqtypes img {
   float: right;
@@ -179,7 +174,6 @@ p {
   border-radius: 10%;
   width: 200px;
   height: 200px;
-  /* border: 1px solid black; */
 }
 
 /* label colors */
@@ -248,7 +242,7 @@ p {
 .intro {
   width: 500px;
   line-height: 30px;
-  margin: 0px auto;
+  margin: 50px auto;
 }
 
 /* footer */
