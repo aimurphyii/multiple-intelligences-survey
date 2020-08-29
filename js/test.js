@@ -257,6 +257,17 @@ function createChart(arr) {
   let myPieChart = new Chart(ctx, {
     type: 'bar',
     data: data,
+    options: {
+      scales: {
+        yAxes: [{
+          ticks: {
+            max: 5,
+            min: 0,
+            stepSize: 1
+          }
+        }]
+      },
+    }
   });
 }
 
